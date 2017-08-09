@@ -17,13 +17,15 @@ output [1:0]  clock_divider_o;
 parameter IWAIT	 = 48'FFFFFFFFFFFFF;
 parameter ICMD0  = 48'h400000000095; //r1
 parameter ICMD8  = 48'h48000001AA87; //r7 87 o 0F
-//parameter CMD17 = 48'
 parameter IACMD47= 48'h770000000001;
 parameter ICMD58 = 48'h7A0000000001;
 
 parameter RCMD0  = 48'h370000012083;
 parameter R1ACMD41 = 48'h3F00FF8000FF;
 parameter R2ACMD41 = 48'h3F80FF8000FF;
+
+parameter RCMX	 = 8'h01;
+parameter RCMY	 = 8'h00;
 
 parameter spi_CLK_DIV =2'b00;
 
@@ -32,7 +34,7 @@ parameter idle  = 3'b000;
 parameter CMD0  = 3'b001
 parameter CMD8  = 3'b010;
 parameter CMD58 = 3'b011;
-parameter rev	= 3'b100;
+parameter ACMD41= 3'b100;
 parameter CRC_7 = 3'b101;
 parameter send	= 3'b110;
 parameter veri	= 3'b111;
@@ -91,16 +93,42 @@ always @()begin
 			spi_fbo_o		=	1'b0;
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
-			instruction_sd_o=   ICMD0;
+			instruction_sd_o=   ICMD8;
 			if(spi_done_i)begin
-				if(spi_data_i == RCMD8)begin
+				if(spi_data_i[47:40] == RCMDX)begin
+					next_state = ACMD41;
+				end
+				spi_rst_o  = 1'b0;
+				spi_start_o= 1'b1;
+			end
+			
+		ACMD41:
+			spi_rst_o		=	1'b1;//negative logic
+			spi_fbo_o		=	1'b0;
+			spi_start_o		=	1'b1;
+			clock_divider_o	=	spi_CLK_DIV;
+			instruction_sd_o=   IACMD47;
+			if(spi_done_i)begin
+				if(spi_data_i[47:40] == RCMDX)begin
 					next_state = CMD58;
 				end
 				spi_rst_o  = 1'b0;
 				spi_start_o= 1'b1;
 			end
 			
-		
+		CMD58:
+			spi_rst_o		=	1'b1;//negative logic
+			spi_fbo_o		=	1'b0;
+			spi_start_o		=	1'b1;
+			clock_divider_o	=	spi_CLK_DIV;
+			instruction_sd_o=   ICMD58;
+			if(spi_done_i)begin
+				if(spi_data_i[47:40] == RCMDY)begin
+					next_state = CMD58;
+				end
+				spi_rst_o  = 1'b0;
+				spi_start_o= 1'b1;
+			end		
 
 
 

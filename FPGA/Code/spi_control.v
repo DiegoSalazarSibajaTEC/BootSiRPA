@@ -51,7 +51,7 @@ always @(spi_start_i or state or word_counter or clock_divider_i or received_reg
 				
 			send:begin
 				SS=0;
-				if(word_counter!=7'd97)
+				if(word_counter!=8'h67)
 					begin shift=1; end
 				else begin
 						received_data_o	=	received_reg;
@@ -106,7 +106,7 @@ always@(posedge SCK or posedge clear_reg ) begin // or negedge spi_rst_i
 			begin  received_reg = {MISO,received_reg[47:1]};  end 
 		  else  //MSB first, MISO@lsb -> left shift
 			begin  received_reg = {received_reg[46:0],MISO};  end
-		  word_counter = word_counter + 4'b1;
+		  word_counter = word_counter + 8'b1;
  end 
 end 
 
