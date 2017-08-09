@@ -40,14 +40,16 @@ parameter send	= 3'b110;
 parameter veri	= 3'b111;
 
 
-reg    [2:0]  state;
-reg	   [2:0]  next_state;
+reg    [2:0]  	state;
+reg	   [2:0]  	next_state;
 
-reg	   [2:0] counter_CMD0;
+reg	   [2:0] 	counter_CMD0;
 
 
-reg		[7:0]	edge_detector_reg;
+reg	   [7:0]	edge_detector_reg;
 reg				flag_edge_detector;	
+
+reg	   [39:0]	data_crc;
 	
 always @(posedge control_clk_i or posedge control_rst_i )begin
 	if(control_rst_i)begin
@@ -128,9 +130,11 @@ always @()begin
 				end
 				spi_rst_o  = 1'b0;
 				spi_start_o= 1'b1;
-			end		
+			end	
+			
+		CRC_7:
 
-
+	endcase
 
 end
 	
@@ -164,7 +168,61 @@ always @(posedge control_clk_i or posedge control_rst_i )begin //EDGE DETECTOR
 	end
 end
 	
+////////////////////////////////////
+reg		[39:0]	data_crc; 
+reg 			crc_7_enable;                          
+reg 	[6:0] 	CRC; 
+reg 			flag_crc_done;
+reg 			BITVAL;
+reg		[39:0]	reg_data_crc;
+reg 	[7:0]	counter;
+reg 	[6:0] 	CRC_INT; 
+wire         	inv;
+  
+assign inv = BITVAL ^ CRC_INT[6];                   // XOR required  
+
+
+
+always @(posedge control_clk_i or posedge control_rst_i) begin
 	
+	if(control_rst_i)begin
+		flag_crc_done <= 1'b0;
+		counter<= 6'h00;
+		BITVAL <= 1'B0;
+		CRC_INT <= 0;
+		CRC <= 0;
+	end 
+	
+	if(counter == 8'h29) begin
+		flag_crc_done <= 1'b1;
+		CRC <= CRC_INT;
+	end
+	else if(counter != 8'h29)begin
+		flag_crc_done <= 1'b0;
+		CRC <=CRC;
+	end
+	
+
+	if(crc_7_enable==1'b0)begin
+		reg_data_crc <= data_crc;
+		counter<= 6'h00;
+		CRC_INT <= 0;
+	end
+
+	else if (crc_7_enable==1'b1)begin 
+		BITVAL <= reg_data_crc[39];
+		reg_data_crc <= {reg_data_crc[38:0],1'b0};
+		counter <= counter+8'h01;
+		CRC_INT[6] <= CRC_INT[5];  
+		CRC_INT[5] <= CRC_INT[4];  
+		CRC_INT[4] <= CRC_INT[3];  
+		CRC_INT[3] <= CRC_INT[2] ^ inv;  
+		CRC_INT[2] <= CRC_INT[1];  
+		CRC_INT[1] <= CRC_INT[0];  
+		CRC_INT[0] <= inv;
+	end  
+
+end  	
 
 
 
