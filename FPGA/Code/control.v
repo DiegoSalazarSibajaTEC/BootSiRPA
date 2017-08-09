@@ -71,27 +71,31 @@ end
 	
 
 always @(posedge control_clk_i or posedge control_rst_i )begin
-	if(control_rst_i || enable_idle)begin
+	if(control_rst_i)begin
 		counter_idle <= 6'h00;
+		edge_detector_reg <= 8'h00;
 	end
-	else if(enable_idle==1'b0 && flag_edge_detector==1'b1) begin
-		counter_idle <= counter_idle + 6'h01;
-	end
+	else begin
+		edge_detector_reg <= {spi_SCK_i, edge_detector_reg[7:1]};
+		if(flag_edge_detector==1'b1) begin
+			counter_idle <= counter_idle + 6'h01;
+		end
+	end	
+
 end
 	
 	
-always @(posedge control_clk_i or posedge control_rst_i )begin //CAMBIAR EDGE DETECTOR
+always @(posedge control_clk_i or posedge control_rst_i )begin //EDGE DETECTOR
 	if(control_rst_i)begin
-		edge_detector_reg <= 8'h00;
+		flag_edge_detector = 1'b0;
 	end
-	else if(enable_idle == 1'b0) begin
-		edge_detector_reg <= {spi_SCK_i, edge_detector_reg[6:0]};
-	end
-	if(edge_detector_reg == 8'b10000000)begin
-		flag_edge_detector=1'b1;
-	end
-	else if(edge_detector_reg != 8'b10000000)begin
-		flag_edge_detector=1'b0;
+	else begin
+		if(edge_detector_reg == 8'b10000000)begin
+			flag_edge_detector = 1'b1;
+		end
+		else if(edge_detector_reg != 8'b10000000)begin
+			flag_edge_detector = 1'b0;
+		end
 	end
 end
 	
