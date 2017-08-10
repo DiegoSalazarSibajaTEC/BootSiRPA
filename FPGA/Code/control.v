@@ -1,8 +1,9 @@
 `timescale 1ns / 1ps
 //http://bikealive.nl/sd-v2-initialization.html
-module control(spi_rst_o, spi_fbo_o, spi_start_o, instruction_sd_o, clock_divider_o, spi_data_i, control_rst_i, control_clk_i, spi_SCK_i,spi_done_i,mem_data_o);
+module control(spi_rst_o, sd_address_i spi_fbo_o, spi_start_o, instruction_sd_o, clock_divider_o, spi_data_i, control_rst_i, control_clk_i, spi_SCK_i,spi_done_i,mem_data_o);
 
 input  [47:0] spi_data_i;
+input  [31:0] sd_address_i;
 input		  control_rst_i;
 input		  control_clk_i;
 input		  spi_SCK_i;
@@ -136,7 +137,7 @@ always @()begin
 			spi_fbo_o		=	1'b1;
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
-			instruction_sd_o=   {2'b01,6'b010001,address,8'b00000001};
+			instruction_sd_o=   {2'b01,6'b010001,sd_address_i,8'b00000001};
 			if(spi_done_i)begin
 				if(spi_data_i[47:40] == RCMDY)begin
 					next_state = CMD58;
@@ -145,7 +146,17 @@ always @()begin
 				spi_rst_o  = 1'b0;
 				spi_start_o= 1'b1;
 		
-		
+		veri:
+			spi_rst_o		=	1'b1;//negative logic
+			spi_fbo_o		=	1'b1;
+			spi_start_o		=	1'b1;
+			clock_divider_o	=	spi_CLK_DIV;
+			instruction_sd_o=   IWAIT;
+			if(spi_done_i)begin
+				next_state = send;
+				spi_rst_o  = 1'b0;
+				spi_start_o= 1'b1;
+			end
 			
 
 
