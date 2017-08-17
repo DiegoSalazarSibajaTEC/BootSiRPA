@@ -135,6 +135,10 @@ module control_tb;
 	repeat (2) begin 
 			@ (posedge spi_SCK_i); 
 		end 
+	spi_done_i = 0;
+	repeat (120) begin 
+			@ (posedge spi_SCK_i); 
+		end 
 		
 	end
 	

@@ -48,21 +48,23 @@ reg	   [2:0]  	next_state;
 reg	   [2:0] 	counter_CMD0;
 
 
-reg	   [7:0]	edge_detector_reg;
-reg				flag_edge_detector;	
+reg	   [8:0]	edge_detector_reg;
+
 
 reg	   [39:0]	data_crc;
 	
 always @(posedge control_clk_i or posedge control_rst_i )begin
 	if(control_rst_i)begin
 		state <= idle;
+		edge_detector_reg <= 2'b00;
 	end
 	else begin
 		state <= next_state;
+		edge_detector_reg <= {spi_done_i, edge_detector_reg[7:1]};
 	end
 end
 
-always @(spi_done_i or state or spi_data_i)begin
+always @(spi_done_i or state or spi_data_i or edge_detector_reg)begin
 	next_state = state;
 	
 	case(state)
@@ -72,10 +74,12 @@ always @(spi_done_i or state or spi_data_i)begin
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
 			instruction_sd_o=   IWAIT;
-			if(spi_done_i & flag_edge_detector)begin
-				next_state = CMD0;
+			if(edge_detector_reg != 8'h00) begin
+				spi_start_o= 1'b0;
 				spi_rst_o  = 1'b0;
-				spi_start_o= 1'b1;
+			end
+			if(edge_detector_reg == 8'h01)begin
+				next_state = CMD0;
 			end
 		end
 		
@@ -85,10 +89,12 @@ always @(spi_done_i or state or spi_data_i)begin
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
 			instruction_sd_o=   ICMD0;
-			if(spi_done_i & flag_edge_detector)begin
-				next_state = CMD8;
+			if(edge_detector_reg != 8'h00) begin
+				spi_start_o= 1'b0;
 				spi_rst_o  = 1'b0;
-				spi_start_o= 1'b1;
+			end
+			if(edge_detector_reg == 8'h01)begin
+				next_state = CMD8;
 			end
 		end
 			
@@ -98,11 +104,14 @@ always @(spi_done_i or state or spi_data_i)begin
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
 			instruction_sd_o=   ICMD8;
-			if(spi_done_i & flag_edge_detector)begin
-				next_state = ACMD41;
+			if(edge_detector_reg != 8'h00) begin
+				spi_start_o= 1'b0;
 				spi_rst_o  = 1'b0;
-				spi_start_o= 1'b1;
 			end
+			if(edge_detector_reg == 8'h01)begin
+				next_state = ACMD41;
+			end
+			
 		end
 		
 		ACMD41: begin
@@ -111,12 +120,14 @@ always @(spi_done_i or state or spi_data_i)begin
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
 			instruction_sd_o=   IACMD47;
-			if(spi_done_i & flag_edge_detector)begin
+			if(edge_detector_reg != 8'h00) begin
+				spi_start_o= 1'b0;
+				spi_rst_o  = 1'b0;
+			end
+			if(edge_detector_reg == 8'h01)begin
 				if(spi_data_i[47:40] == RCMDY)begin
 					next_state = CMD58;
 				end
-				spi_rst_o  = 1'b0;
-				spi_start_o= 1'b1;
 			end
 		end
 		
@@ -126,13 +137,15 @@ always @(spi_done_i or state or spi_data_i)begin
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
 			instruction_sd_o=   ICMD58;
-			if(spi_done_i & flag_edge_detector)begin
-				if(spi_data_i[47:40] == RCMDY)begin
-					next_state = CMD58;
-				end
+			if(edge_detector_reg != 8'h00) begin
+				spi_start_o= 1'b0;
 				spi_rst_o  = 1'b0;
-				spi_start_o= 1'b1;
-			end	
+			end
+			if(edge_detector_reg == 8'h01)begin
+				if(spi_data_i[47:40] == RCMDY)begin
+					next_state = send;
+				end
+			end
 		end
 		
 		send: begin //modificar
@@ -141,13 +154,17 @@ always @(spi_done_i or state or spi_data_i)begin
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
 			instruction_sd_o=   {2'b01, 6'b010001, sd_address_i , 8'b00000001 } ;
-			if(spi_done_i & flag_edge_detector)begin
+			if(spi_done_i)begin
 				if(spi_data_i[47:40] == RCMDY)begin
-					next_state = veri;
 					mem_data_o =  spi_data_i[39:8];
 				end
+			end
+			if(edge_detector_reg != 8'h00) begin
+				spi_start_o= 1'b0;
 				spi_rst_o  = 1'b0;
-				spi_start_o= 1'b1;
+			end
+			if(edge_detector_reg == 8'h01)begin
+				next_state = veri;
 			end
 		end
 		
@@ -157,49 +174,20 @@ always @(spi_done_i or state or spi_data_i)begin
 			spi_start_o		=	1'b1;
 			clock_divider_o	=	spi_CLK_DIV;
 			instruction_sd_o=   IWAIT;
-			if(spi_done_i & flag_edge_detector)begin
-				next_state = send;
+			if(edge_detector_reg != 8'h00) begin
+				spi_start_o= 1'b0;
 				spi_rst_o  = 1'b0;
-				spi_start_o= 1'b1;
+			end
+			if(edge_detector_reg == 8'h01)begin
+				next_state = send;
 			end
 		end
 
-		//default: next_state = idle;
+		default: next_state = idle;
 
 	endcase
 
 end
 	
-
-always @(posedge control_clk_i or posedge control_rst_i )begin
-	if(control_rst_i)begin
-		counter_CMD0 <= 3'h0;
-		edge_detector_reg <= 8'h00;
-	end
-	else begin
-		edge_detector_reg <= {spi_SCK_i, edge_detector_reg[7:1]};
-		if(flag_edge_detector==1'b1) begin
-			counter_CMD0 <= counter_CMD0 + 3'h1;
-		end
-	end	
-
-end
-	
-	
-always @(posedge control_clk_i or posedge control_rst_i )begin //EDGE DETECTOR
-	if(control_rst_i)begin
-		flag_edge_detector = 1'b0;
-	end
-	else begin
-		if(edge_detector_reg == 8'b10000000)begin
-			flag_edge_detector = 1'b1;
-		end
-		else if(edge_detector_reg != 8'b10000000)begin
-			flag_edge_detector = 1'b0;
-		end
-	end
-end
-	
-
 
 endmodule
