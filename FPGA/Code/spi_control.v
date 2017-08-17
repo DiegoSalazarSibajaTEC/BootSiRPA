@@ -38,10 +38,10 @@ always @(spi_start_i or state or word_counter or clock_divider_i or received_reg
 				if(spi_start_i == 1'b1)
 		               begin 
 							 case (clock_divider_i)
-								2'b00: divider = 5'd2;
-								2'b01: divider = 5'd4;
-								2'b10: divider = 5'd8;
-								2'b11: divider = 5'd16;
+								2'b00: divider = 5'd10; //ADAPTADOS PARA NEXYS 4
+								2'b01: divider = 5'd6;
+								2'b10: divider = 5'd4;
+								2'b11: divider = 5'd2;
  							 endcase
 						shift		=	1'b1;
 						done		=	1'b0;
