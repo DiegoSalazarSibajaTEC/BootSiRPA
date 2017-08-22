@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module SPI_STA(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_data_i, clock_divider_i, MISO, SS, SCK, MOSI, done, received_data_o, spi_datawe_o, spi_sendenb_i);
+module spi_std(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_data_i, clock_divider_i, MISO, SS, SCK, MOSI, done, received_data_o, spi_datawe_o, spi_sendenb_i);
     input 		spi_rst_i;		//RESET
 	input 		spi_clk_i;		//CLOCK INPUT
 	input 		spi_fbo_i;		//FIRST BIT OUT FLAG

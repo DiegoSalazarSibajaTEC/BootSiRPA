@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //http://bikealive.nl/sd-v2-initialization.html
-module CONTROL_MSD(spi_rst_o, sd_address_i, spi_fbo_o, spi_start_o, instruction_sd_o, clock_divider_o, spi_data_i, control_rst_i, control_clk_i,
+module controlmicro_sd(spi_rst_o, sd_address_i, spi_fbo_o, spi_start_o, instruction_sd_o, clock_divider_o, spi_data_i, control_rst_i, control_clk_i,
 					spi_SCK_i,spi_done_i,mem_data_o, control_we_i, control_re_i,spi_datawe_i, spi_sendenb_o,control_dataw_i);
 
 input  		[79:0] 	spi_data_i;
