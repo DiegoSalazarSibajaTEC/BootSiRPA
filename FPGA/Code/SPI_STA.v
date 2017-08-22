@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module spi_master(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_data_i, clock_divider_i, MISO, SS, SCK, MOSI, done, received_data_o);
+module SPI_STA(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_data_i, clock_divider_i, MISO, SS, SCK, MOSI, done, received_data_o, spi_datawe_o, spi_sendenb_i);
     input 		spi_rst_i;		//RESET
 	input 		spi_clk_i;		//CLOCK INPUT
 	input 		spi_fbo_i;		//FIRST BIT OUT FLAG
@@ -8,11 +8,13 @@ module spi_master(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_dat
     input [47:0] transmission_data_i;  //DATA TO TRANSMIT
     input [1:0] clock_divider_i;  //clock divider
 	input 		MISO;
+	input 		spi_sendenb_i;
+	output reg		spi_datawe_o;
 	output reg 	SS; 
 	output reg 	SCK; 
 	output reg 	MOSI; 
     output reg  done;
-	output reg [47:0] received_data_o; //received data
+	output reg [79:0] received_data_o; //received data
 
 	parameter 	idle=2'b00;		
 	parameter 	send=2'b10; 
@@ -22,7 +24,7 @@ module spi_master(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_dat
 	reg [1:0]	next_state;
 
 	reg [47:0] 	transmission_reg;
-	reg	[47:0]	received_reg;
+	reg	[79:0]	received_reg;
 	reg [7:0] 	word_counter;
 	reg [4:0] 	divider,counter_divider;
 	reg 		shift,clear_reg;
@@ -51,13 +53,29 @@ always @(spi_start_i or state or word_counter or clock_divider_i or received_reg
 				
 			send:begin
 				SS=0;
-				if(word_counter!=8'h67)
-					begin shift=1; end
-				else begin
-						received_data_o	=	received_reg;
+				if(word_counter!=8'h88) //136
+					begin 
+					shift=1;
+					if(word_counter > 8'h88 && spi_sendenb_i && received_reg == 80'h00000000000000000001) 
 						done			=	1'b1;
 						next_state		=	finish;
 					end
+				else begin
+						if(spi_sendenb_i)begin
+							received_data_o	=	received_reg;
+						end
+						else begin
+							received_data_o	=	received_reg;
+							done			=	1'b1;
+							next_state		=	finish;
+						end
+					end
+				if(word_counter == 8'h47)begin
+					spi_datawe_o = 1'b1;
+				end
+				else begin
+					spi_datawe_o = 1'b0;
+				end
 				end//send
 				
 			finish:begin
@@ -99,13 +117,13 @@ end
 always@(posedge SCK or posedge clear_reg ) begin // or negedge spi_rst_i
 	if(clear_reg == 1'b1)  begin
 			word_counter = 8'd0;  
-			received_reg = 48'hFFFFFFFFFFFF;  
+			received_reg = 80'hFFFFFFFFFFFFFFFFFFFF;  
 	end
     else begin 
 		  if(spi_fbo_i == 1'b0) //LSB first, MISO@msb -> right shift
-			begin  received_reg = {MISO,received_reg[47:1]};  end 
+			begin  received_reg = {MISO,received_reg[79:1]};  end 
 		  else  //MSB first, MISO@lsb -> left shift
-			begin  received_reg = {received_reg[46:0],MISO};  end
+			begin  received_reg = {received_reg[78:0],MISO};  end
 		  word_counter = word_counter + 8'b1;
  end 
 end 
@@ -116,7 +134,7 @@ always@(negedge SCK or posedge clear_reg) begin
 	  MOSI = 1'b1;  
 	end  
 	else begin
-		if(word_counter == 1'b0) begin //load data into transmission_reg
+		if(word_counter == 8'h00 ||(word_counter == 8'h48 && spi_sendenb_i) ) begin //load data into transmission_reg
 			transmission_reg = transmission_data_i; 
 			MOSI= spi_fbo_i ? transmission_reg[47]:transmission_reg[0];
 		end 
