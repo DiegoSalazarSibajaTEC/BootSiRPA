@@ -1,33 +1,34 @@
 `timescale 1ns / 1ps
 
-module spi_std(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_data_i, clock_divider_i, MISO, SS, SCK, MOSI, done, received_data_o, spi_datawe_o, spi_sendenb_i);
-    input 		spi_rst_i;		//RESET
-	input 		spi_clk_i;		//CLOCK INPUT
-	input 		spi_fbo_i;		//FIRST BIT OUT FLAG
-	input 		spi_start_i;	//START 
-    input [47:0] transmission_data_i;  //DATA TO TRANSMIT
-    input [1:0] clock_divider_i;  //clock divider
-	input 		MISO;
-	input 		spi_sendenb_i;
-	output reg		spi_datawe_o;
-	output reg 	SS; 
-	output reg 	SCK; 
-	output reg 	MOSI; 
-    output reg  done;
-	output reg [79:0] received_data_o; //received data
+module spi_std(spi_rst_i, spi_clk_i, spi_fbo_i, spi_start_i, transmission_data_i, clock_divider_i, 
+				MISO, SS, SCK, MOSI, done, received_data_o, spi_datawe_o, spi_sendenb_i);
+input 		spi_rst_i;		//RESET
+input 		spi_clk_i;		//CLOCK INPUT
+input 		spi_fbo_i;		//FIRST BIT OUT FLAG
+input 		spi_start_i;	//START 
+input [47:0] transmission_data_i;  //DATA TO TRANSMIT
+input [1:0] clock_divider_i;  //clock divider
+input 		MISO;
+input 		spi_sendenb_i;
+output reg		spi_datawe_o;
+output reg 	SS; 
+output reg 	SCK; 
+output reg 	MOSI; 
+output reg  done;
+output reg [79:0] received_data_o; //received data
 
-	parameter 	idle=2'b00;		
-	parameter 	send=2'b10; 
-	parameter 	finish=2'b11; 
-	
-	reg [1:0] 	state;
-	reg [1:0]	next_state;
+parameter 	idle=2'b00;		
+parameter 	send=2'b10; 
+parameter 	finish=2'b11; 
 
-	reg [47:0] 	transmission_reg;
-	reg	[79:0]	received_reg;
-	reg [7:0] 	word_counter;
-	reg [4:0] 	divider,counter_divider;
-	reg 		shift,clear_reg;
+reg [1:0] 	state;
+reg [1:0]	next_state;
+
+reg [47:0] 	transmission_reg;
+reg	[79:0]	received_reg;
+reg [7:0] 	word_counter;
+reg [4:0] 	divider,counter_divider;
+reg 		shift,clear_reg;
 
 //FSM i/o
 always @(spi_start_i or state or word_counter or clock_divider_i or received_reg) begin
@@ -70,7 +71,7 @@ always @(spi_start_i or state or word_counter or clock_divider_i or received_reg
 							next_state		=	finish;
 						end
 					end
-				if(word_counter == 8'h47)begin
+				if(word_counter <= 8'h47 && spi_sendenb_i)begin
 					spi_datawe_o = 1'b1;
 				end
 				else begin
