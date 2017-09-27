@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1505738766">
+  <File Type="PWROPT-DRC" Name="spi_drc_pwropted.rpt"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="spi_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="spi_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="spi_power_routed.rpx"/>
+  <File Type="PA-TCL" Name="spi.tcl"/>
+  <File Type="OPT-HWDEF" Name="spi.hwdef"/>
+  <File Type="RDI-RDI" Name="spi.vdi"/>
+  <File Type="OPT-DCP" Name="spi_opt.dcp"/>
+  <File Type="OPT-DRC" Name="spi_drc_opted.rpt"/>
+  <File Type="OPT-TIMING" Name="spi_timing_summary_opted.rpt"/>
+  <File Type="PWROPT-DCP" Name="spi_pwropt.dcp"/>
+  <File Type="PWROPT-TIMING" Name="spi_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="spi_placed.dcp"/>
+  <File Type="PLACE-IO" Name="spi_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="spi_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="spi_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="spi_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="spi_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="spi_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="spi_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="spi_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="spi_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="spi_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="spi_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="spi_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-TIMING" Name="spi_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="spi_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="spi_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="spi_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="spi_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="spi_drc_routed.pb"/>
+  <File Type="BG-BIN" Name="spi.bin"/>
+  <File Type="ROUTE-DRC-RPX" Name="spi_drc_routed.rpx"/>
+  <File Type="BG-DRC" Name="spi.drc"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="spi_methodology_drc_routed.rpt"/>
+  <File Type="BITSTR-MSK" Name="spi.msk"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="spi_methodology_drc_routed.rpx"/>
+  <File Type="BG-BGN" Name="spi.bgn"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="spi_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="spi_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="spi_power_summary_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="spi_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="spi_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="spi_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="spi_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="spi_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="spi_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="spi_clock_utilization_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="spi_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="spi_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="spi_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="spi_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="spi_timing_summary_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="spi.bit"/>
+  <File Type="BITSTR-RBT" Name="spi.rbt"/>
+  <File Type="BITSTR-NKY" Name="spi.nky"/>
+  <File Type="BITSTR-BMM" Name="spi_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="spi.mmi"/>
+  <File Type="BITSTR-SYSDEF" Name="spi.sysdef"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/spi.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="spi"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/nexys4_master.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>
