@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+//https://embeddedthoughts.com/2016/07/13/fifo-buffer-using-block-ram-on-a-xilinx-spartan-3-fpga/
 module fifo#(parameter ADDRESS_WIDTH =13, DATA_WIDTH=32)(fifo_clk_i, fifo_rst_i, fifo_readflag_i, fifo_writeflag_i, fifo_writedata_i, fifo_emptyflag_o, 
 														fifo_fullflag_o, fifo_readdata_o);
 	
