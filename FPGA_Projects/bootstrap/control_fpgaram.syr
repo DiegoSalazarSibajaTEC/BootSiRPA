@@ -1,0 +1,437 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Reading design: control_fpgaram.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "control_fpgaram.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "control_fpgaram"
+Output Format                      : NGC
+Target Device                      : xc7a100t-1-csg324
+
+---- Source Options
+Top Module Name                    : control_fpgaram
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\control_fpgaram.v" into library work
+Parsing module <control_fpgaram>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <control_fpgaram>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <control_fpgaram>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\control_fpgaram.v".
+        ADDRESS_WIDTH = 22
+        DATA_WIDTH = 32
+        FPGA_DATA_WIDTH = 16
+    Found 22-bit register for signal <sram_address>.
+    Found 6-bit register for signal <write_init_counter>.
+    Found 6-bit adder for signal <write_init_counter[5]_GND_1_o_add_3_OUT> created at line 60.
+    Found 22-bit adder for signal <sram_address[21]_GND_1_o_add_4_OUT> created at line 62.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  28 D-type flip-flop(s).
+	inferred  19 Multiplexer(s).
+Unit <control_fpgaram> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 22-bit adder                                          : 1
+ 6-bit adder                                           : 1
+# Registers                                            : 2
+ 22-bit register                                       : 1
+ 6-bit register                                        : 1
+# Multiplexers                                         : 19
+ 1-bit 2-to-1 multiplexer                              : 10
+ 16-bit 2-to-1 multiplexer                             : 4
+ 2-bit 2-to-1 multiplexer                              : 2
+ 22-bit 2-to-1 multiplexer                             : 1
+ 32-bit 2-to-1 multiplexer                             : 1
+ 6-bit 2-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <control_fpgaram>.
+The following registers are absorbed into counter <write_init_counter>: 1 register on signal <write_init_counter>.
+The following registers are absorbed into counter <sram_address>: 1 register on signal <sram_address>.
+Unit <control_fpgaram> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 2
+ 22-bit up counter                                     : 1
+ 6-bit up counter                                      : 1
+# Multiplexers                                         : 18
+ 1-bit 2-to-1 multiplexer                              : 10
+ 16-bit 2-to-1 multiplexer                             : 4
+ 2-bit 2-to-1 multiplexer                              : 2
+ 22-bit 2-to-1 multiplexer                             : 1
+ 32-bit 2-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <control_fpgaram> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block control_fpgaram, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 28
+ Flip-Flops                                            : 28
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : control_fpgaram.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 162
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 21
+#      LUT2                        : 19
+#      LUT3                        : 45
+#      LUT4                        : 1
+#      LUT5                        : 7
+#      LUT6                        : 22
+#      MUXCY                       : 21
+#      VCC                         : 1
+#      XORCY                       : 22
+# FlipFlops/Latches                : 28
+#      FDC                         : 6
+#      FDCE                        : 22
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 158
+#      IBUF                        : 96
+#      OBUF                        : 62
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              28  out of  126800     0%  
+ Number of Slice LUTs:                  117  out of  63400     0%  
+    Number used as Logic:               117  out of  63400     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    117
+   Number with an unused Flip Flop:      89  out of    117    76%  
+   Number with an unused LUT:             0  out of    117     0%  
+   Number of fully used LUT-FF pairs:    28  out of    117    23%  
+   Number of unique control sets:         3
+
+IO Utilization: 
+ Number of IOs:                         159
+ Number of bonded IOBs:                 159  out of    210    75%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+control_mem_clk_i                  | BUFGP                  | 28    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 2.974ns (Maximum Frequency: 336.219MHz)
+   Minimum input arrival time before clock: 2.052ns
+   Maximum output required time after clock: 3.774ns
+   Maximum combinational path delay: 3.464ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'control_mem_clk_i'
+  Clock period: 2.974ns (frequency: 336.219MHz)
+  Total number of paths / destination ports: 421 / 50
+-------------------------------------------------------------------------
+Delay:               2.974ns (Levels of Logic = 17)
+  Source:            sram_address_0 (FF)
+  Destination:       sram_address_14 (FF)
+  Source Clock:      control_mem_clk_i falling
+  Destination Clock: control_mem_clk_i falling
+
+  Data Path: sram_address_0 to sram_address_14
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             3   0.478   0.413  sram_address_0 (sram_address_0)
+     INV:I->O              1   0.146   0.000  Mcount_sram_address_lut<0>_INV_0 (Mcount_sram_address_lut<0>)
+     MUXCY:S->O            1   0.472   0.000  Mcount_sram_address_cy<0> (Mcount_sram_address_cy<0>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<1> (Mcount_sram_address_cy<1>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<2> (Mcount_sram_address_cy<2>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<3> (Mcount_sram_address_cy<3>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<4> (Mcount_sram_address_cy<4>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<5> (Mcount_sram_address_cy<5>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<6> (Mcount_sram_address_cy<6>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<7> (Mcount_sram_address_cy<7>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<8> (Mcount_sram_address_cy<8>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<9> (Mcount_sram_address_cy<9>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<10> (Mcount_sram_address_cy<10>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<11> (Mcount_sram_address_cy<11>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<12> (Mcount_sram_address_cy<12>)
+     MUXCY:CI->O           1   0.029   0.000  Mcount_sram_address_cy<13> (Mcount_sram_address_cy<13>)
+     XORCY:CI->O           1   0.510   0.421  Mcount_sram_address_xor<14> (Result<14>)
+     LUT3:I2->O            1   0.124   0.000  sram_address_14_dpot (sram_address_14_dpot)
+     FDCE:D                    0.030          sram_address_14
+    ----------------------------------------
+    Total                      2.974ns (2.140ns logic, 0.834ns route)
+                                       (72.0% logic, 28.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'control_mem_clk_i'
+  Total number of paths / destination ports: 78 / 71
+-------------------------------------------------------------------------
+Offset:              2.052ns (Levels of Logic = 3)
+  Source:            write_enable_i<1> (PAD)
+  Destination:       sram_address_1 (FF)
+  Destination Clock: control_mem_clk_i falling
+
+  Data Path: write_enable_i<1> to sram_address_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             8   0.001   0.965  write_enable_i_1_IBUF (write_enable_i_1_IBUF)
+     LUT5:I0->O           15   0.124   0.808  _n0115_inv1_rstpot (_n0115_inv1_rstpot)
+     LUT3:I0->O            1   0.124   0.000  sram_address_1_dpot (sram_address_1_dpot)
+     FDCE:D                    0.030          sram_address_1
+    ----------------------------------------
+    Total                      2.052ns (0.279ns logic, 1.773ns route)
+                                       (13.6% logic, 86.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'control_mem_clk_i'
+  Total number of paths / destination ports: 256 / 45
+-------------------------------------------------------------------------
+Offset:              3.774ns (Levels of Logic = 4)
+  Source:            write_init_counter_5 (FF)
+  Destination:       sram_datain_o<15> (PAD)
+  Source Clock:      control_mem_clk_i falling
+
+  Data Path: write_init_counter_5 to sram_datain_o<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              6   0.478   0.569  write_init_counter_5 (write_init_counter_5)
+     LUT3:I1->O            4   0.124   0.939  Mmux_sram_cs_o1211 (Mmux_sram_cs_o121)
+     LUT6:I1->O           16   0.124   1.017  Mmux_sram_datain_o1121 (Mmux_sram_datain_o112)
+     LUT6:I1->O            1   0.124   0.399  Mmux_sram_datain_o71 (sram_datain_o_15_OBUF)
+     OBUF:I->O                 0.000          sram_datain_o_15_OBUF (sram_datain_o<15>)
+    ----------------------------------------
+    Total                      3.774ns (0.850ns logic, 2.924ns route)
+                                       (22.5% logic, 77.5% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 222 / 61
+-------------------------------------------------------------------------
+Delay:               3.464ns (Levels of Logic = 5)
+  Source:            write_enable_i<0> (PAD)
+  Destination:       sram_datain_o<15> (PAD)
+
+  Data Path: write_enable_i<0> to sram_datain_o<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.001   0.736  write_enable_i_0_IBUF (write_enable_i_0_IBUF)
+     LUT3:I0->O            4   0.124   0.939  Mmux_sram_cs_o1211 (Mmux_sram_cs_o121)
+     LUT6:I1->O           16   0.124   1.017  Mmux_sram_datain_o1121 (Mmux_sram_datain_o112)
+     LUT6:I1->O            1   0.124   0.399  Mmux_sram_datain_o71 (sram_datain_o_15_OBUF)
+     OBUF:I->O                 0.000          sram_datain_o_15_OBUF (sram_datain_o<15>)
+    ----------------------------------------
+    Total                      3.464ns (0.373ns logic, 3.091ns route)
+                                       (10.8% logic, 89.2% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock control_mem_clk_i
+-----------------+---------+---------+---------+---------+
+                 | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock     |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-----------------+---------+---------+---------+---------+
+control_mem_clk_i|         |         |    2.974|         |
+-----------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.07 secs
+ 
+--> 
+
+Total memory usage is 319132 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

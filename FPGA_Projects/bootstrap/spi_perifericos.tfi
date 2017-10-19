@@ -1,0 +1,18 @@
+
+
+
+// Instantiate the module
+spi_perifericos instance_name (
+    .spi_clk_i(spi_clk_i), 
+    .spi_rst_i(spi_rst_i), 
+    .spi_data_i(spi_data_i), 
+    .spi_data_o(spi_data_o), 
+    .MOSI(MOSI), 
+    .MISO(MISO), 
+    .SCK_SPI(SCK_SPI), 
+    .SS(SS), 
+    .spi_doneflag_o(spi_doneflag_o), 
+    .spi_statusreg_i(spi_statusreg_i)
+    );
+
+

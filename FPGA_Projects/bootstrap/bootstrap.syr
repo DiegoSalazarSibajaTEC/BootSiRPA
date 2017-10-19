@@ -1,0 +1,1500 @@
+Release 14.7 - xst P.20131013 (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.15 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.15 secs
+ 
+--> Reading design: bootstrap.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "bootstrap.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "bootstrap"
+Output Format                      : NGC
+Target Device                      : xc7a100t-1-csg324
+
+---- Source Options
+Top Module Name                    : bootstrap
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_microSD.v" into library work
+Parsing module <spi_microSD>.
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_init.v" into library work
+Parsing module <spi_init>.
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_perifericos.v" into library work
+Parsing module <spi_perifericos>.
+INFO:HDLCompiler:693 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_perifericos.v" Line 6. parameter declaration becomes local in spi_perifericos with formal parameter declaration list
+INFO:HDLCompiler:693 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_perifericos.v" Line 8. parameter declaration becomes local in spi_perifericos with formal parameter declaration list
+INFO:HDLCompiler:693 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_perifericos.v" Line 9. parameter declaration becomes local in spi_perifericos with formal parameter declaration list
+INFO:HDLCompiler:693 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_perifericos.v" Line 10. parameter declaration becomes local in spi_perifericos with formal parameter declaration list
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_microSDHC.v" into library work
+Parsing module <spi_microSDHC>.
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\ram_dual.v" into library work
+Parsing module <ram_dual>.
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi.v" into library work
+Parsing module <spi>.
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\fifo.v" into library work
+Parsing module <fifo>.
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\control_mem.v" into library work
+Parsing module <control_mem>.
+Analyzing Verilog file "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\bootstrap.v" into library work
+Parsing module <bootstrap>.
+WARNING:HDLCompiler:568 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\bootstrap.v" Line 46: Constant value is truncated to fit in <1> bits.
+WARNING:HDLCompiler:568 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\bootstrap.v" Line 50: Constant value is truncated to fit in <1> bits.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <bootstrap>.
+
+Elaborating module <control_mem(ADDRESS_WIDTH=22,DATA_WIDTH=32,FPGA_DATA_WIDTH=16)>.
+WARNING:HDLCompiler:189 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\bootstrap.v" Line 72: Size mismatch in connection of port <write_enable_i>. Formal port size is 2-bit while actual signal size is 1-bit.
+
+Elaborating module <fifo(ADDRESS_WIDTH=6,DATA_WIDTH=32)>.
+
+Elaborating module <ram_dual(ADDRESS_WIDTH=6,DATA_WIDTH=32)>.
+
+Elaborating module <spi(DATA_WIDTH=8)>.
+
+Elaborating module <spi_microSDHC>.
+
+Elaborating module <spi_microSD>.
+WARNING:HDLCompiler:413 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_microSD.v" Line 52: Result of 5-bit expression is truncated to fit in 1-bit target.
+
+Elaborating module <spi_init>.
+
+Elaborating module <spi_perifericos(DATA_WIDTH=8)>.
+WARNING:HDLCompiler:189 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\bootstrap.v" Line 100: Size mismatch in connection of port <spi_data_i>. Formal port size is 48-bit while actual signal size is 32-bit.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <bootstrap>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\bootstrap.v".
+        MEM_DATA_WIDTH = 16
+        SPI_DATA_WIDTH = 32
+        MEM_ADDRESS_WIDTH = 22
+        SPI_ADDRESS_WIDTH = 32
+INFO:Xst:3210 - "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\bootstrap.v" line 85: Output port <fifo_fullflag_o> of the instance <FIFO1> is unconnected or connected to loadless signal.
+    Found 1-bit register for signal <write_enable>.
+    WARNING:Xst:2404 -  FFs/Latches <error<0:0>> (without init value) have a constant value of 1 in block <bootstrap>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <bootstrap> synthesized.
+
+Synthesizing Unit <control_mem>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\control_mem.v".
+        ADDRESS_WIDTH = 22
+        DATA_WIDTH = 32
+        FPGA_DATA_WIDTH = 16
+    Found 22-bit register for signal <sram_address>.
+    Found 6-bit register for signal <write_init_counter>.
+    Found 6-bit adder for signal <write_init_counter[5]_GND_2_o_add_3_OUT> created at line 70.
+    Found 22-bit adder for signal <sram_address[21]_GND_2_o_add_4_OUT> created at line 72.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  28 D-type flip-flop(s).
+	inferred  19 Multiplexer(s).
+Unit <control_mem> synthesized.
+
+Synthesizing Unit <fifo>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\fifo.v".
+        ADDRESS_WIDTH = 6
+        DATA_WIDTH = 32
+    Found 1-bit register for signal <empty_reg>.
+    Found 1-bit register for signal <full_reg>.
+    Found 6-bit register for signal <read_address_reg>.
+    Found 6-bit register for signal <write_address_reg>.
+    Found 6-bit adder for signal <write_address_after> created at line 48.
+    Found 6-bit adder for signal <read_address_after> created at line 49.
+    Found 6-bit comparator not equal for signal <read_address_after[5]_write_address_reg[5]_equal_5_o> created at line 65
+    Found 6-bit comparator not equal for signal <write_address_after[5]_read_address_reg[5]_equal_6_o> created at line 73
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  14 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+Unit <fifo> synthesized.
+
+Synthesizing Unit <ram_dual>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\ram_dual.v".
+        ADDRESS_WIDTH = 6
+        DATA_WIDTH = 32
+    Found 64x32-bit dual-port RAM <Mram_ram> for signal <ram>.
+    Found 6-bit register for signal <read_address_reg>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   6 D-type flip-flop(s).
+Unit <ram_dual> synthesized.
+
+Synthesizing Unit <spi>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi.v".
+        DATA_WIDTH = 8
+    Found 1-bit 3-to-1 multiplexer for signal <MOSI> created at line 12.
+    Found 1-bit 3-to-1 multiplexer for signal <SCK_SPI> created at line 14.
+    Found 1-bit 3-to-1 multiplexer for signal <SS> created at line 13.
+    Found 3-bit 3-to-1 multiplexer for signal <spi_flagreg_o> created at line 15.
+    Found 32-bit 3-to-1 multiplexer for signal <spi_data_o> created at line 16.
+    Summary:
+	inferred   7 Multiplexer(s).
+Unit <spi> synthesized.
+
+Synthesizing Unit <spi_microSDHC>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_microSDHC.v".
+    Summary:
+	no macro.
+Unit <spi_microSDHC> synthesized.
+
+Synthesizing Unit <spi_microSD>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_microSD.v".
+        word_in_width = 48
+        word_out_width = 32
+        down_clock = 9
+        idle = 2'b00
+        send = 2'b10
+        finish = 2'b11
+    Found 2-bit register for signal <state>.
+    Found 2-bit register for signal <flag_edge_detector>.
+    Found 8-bit register for signal <word_counter_wroper>.
+    Found 5-bit register for signal <counter_divider>.
+    Found 1-bit register for signal <SCK>.
+    Found 12-bit register for signal <word_counter_send>.
+    Found 1-bit register for signal <clear_reg_word>.
+    Found 8-bit register for signal <word_counter>.
+    Found 8-bit register for signal <transmission_reg>.
+    Found 1-bit register for signal <MOSI>.
+    Found 8-bit register for signal <received_reg>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 8                                              |
+    | Outputs            | 4                                              |
+    | Clock              | spi_clk_i (rising_edge)                        |
+    | Reset              | spi_rst_i (positive)                           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 12-bit adder for signal <n0358> created at line 137.
+    Found 12-bit adder for signal <n0359> created at line 143.
+    Found 12-bit adder for signal <n0360> created at line 147.
+    Found 12-bit adder for signal <n0361> created at line 151.
+    Found 12-bit adder for signal <n0362> created at line 155.
+    Found 5-bit adder for signal <counter_divider[4]_GND_8_o_add_184_OUT> created at line 191.
+    Found 12-bit adder for signal <word_counter_send[11]_GND_8_o_add_194_OUT> created at line 213.
+    Found 8-bit adder for signal <word_counter_wroper[7]_GND_8_o_add_206_OUT> created at line 232.
+    Found 8-bit adder for signal <word_counter[7]_GND_8_o_add_210_OUT> created at line 245.
+    Found 3x8-bit multiplier for signal <PWR_7_o_word_counter_wroper[7]_MuLt_28_OUT> created at line 137.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<30>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<29>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<28>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<27>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<26>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<25>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<24>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<23>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<22>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<21>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<20>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<19>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<18>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<17>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<16>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <SS>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_doneflag_o>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <complete_word>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_flagdatawr_o>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_45_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_46_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_47_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<7>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_49_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<6>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_51_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<5>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_53_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<4>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_55_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<3>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_57_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<2>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <word_counter_send[11]_word_counter_send[11]_DLATCH_59_q>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<1>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<31>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit tristate buffer for signal <R1<0>> created at line 124
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<30>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<29>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<28>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<27>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<26>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<25>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<24>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<23>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<22>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<21>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<20>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<19>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<18>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<17>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<16>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<31>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 12-bit comparator equal for signal <word_counter_send[11]_BUS_0001_equal_54_o> created at line 137
+    Found 12-bit comparator equal for signal <word_counter_send[11]_BUS_0002_equal_55_o> created at line 143
+    Found 12-bit comparator equal for signal <word_counter_send[11]_BUS_0003_equal_56_o> created at line 147
+    Found 12-bit comparator equal for signal <word_counter_send[11]_BUS_0004_equal_57_o> created at line 151
+    Found 12-bit comparator equal for signal <word_counter_send[11]_BUS_0005_equal_58_o> created at line 155
+    Found 5-bit comparator equal for signal <counter_divider[4]_GND_8_o_equal_183_o> created at line 186
+    Found 12-bit comparator greater for signal <GND_8_o_word_counter_send[11]_LessThan_192_o> created at line 212
+    Summary:
+	inferred   1 Multiplier(s).
+	inferred   9 Adder/Subtractor(s).
+	inferred  54 D-type flip-flop(s).
+	inferred  85 Latch(s).
+	inferred   7 Comparator(s).
+	inferred 127 Multiplexer(s).
+	inferred   8 Tristate(s).
+	inferred   1 Finite State Machine(s).
+Unit <spi_microSD> synthesized.
+
+Synthesizing Unit <spi_init>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_init.v".
+        IWAIT = 48'b111111111111111111111111111111111111111111111111
+        ICMD0 = 48'b010000000000000000000000000000000000000010010101
+        ICMD8 = 48'b010010000000000000000000000000011010101010000111
+        IACMD47 = 48'b011101110000000000000000000000000000000000000001
+        ICMD58 = 48'b011110100000000000000000000000000000000000000001
+        ICMD59 = 48'b011110110000000000000000000000000000000000000001
+        RCMDX = 8'b00000001
+        RCMDY = 8'b00000000
+WARNING:Xst:647 - Input <SCK_SPI> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 8-bit register for signal <counter_operation>.
+    Found 8-bit adder for signal <counter_operation[7]_GND_103_o_add_4_OUT> created at line 59.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   8 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <spi_init> synthesized.
+
+Synthesizing Unit <spi_perifericos>.
+    Related source file is "D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\spi_perifericos.v".
+        DATA_WIDTH = 8
+    Found 2-bit register for signal <state>.
+    Found 2-bit register for signal <flag_edge_detector>.
+    Found 5-bit register for signal <counter_divider>.
+    Found 1-bit register for signal <SCK>.
+    Found 1-bit register for signal <clear_reg_word>.
+    Found 12-bit register for signal <word_counter_send>.
+    Found 8-bit register for signal <word_counter>.
+    Found 8-bit register for signal <received_reg>.
+    Found 8-bit register for signal <transmission_reg>.
+    Found 1-bit register for signal <MOSI>.
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 5                                              |
+    | Clock              | spi_clk_i (rising_edge)                        |
+    | Reset              | spi_rst_i (positive)                           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 11                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 5-bit adder for signal <counter_divider[4]_GND_104_o_add_132_OUT> created at line 114.
+    Found 12-bit adder for signal <word_counter_send[11]_GND_104_o_add_142_OUT> created at line 144.
+    Found 8-bit adder for signal <word_counter[7]_GND_104_o_add_145_OUT> created at line 153.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_doneflag_o>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <complete_word>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_out_MOSI<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<14>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<13>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<12>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<11>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<10>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<9>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<8>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <reg_data_MISO<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <spi_data_o<15>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 5-bit comparator equal for signal <counter_divider[4]_clock_divider[4]_equal_131_o> created at line 109
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+	inferred  46 D-type flip-flop(s).
+	inferred  42 Latch(s).
+	inferred   1 Comparator(s).
+	inferred  20 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <spi_perifericos> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 64x32-bit dual-port RAM                               : 1
+# Multipliers                                          : 1
+ 8x3-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 17
+ 12-bit adder                                          : 7
+ 22-bit adder                                          : 1
+ 5-bit adder                                           : 2
+ 6-bit adder                                           : 3
+ 8-bit adder                                           : 4
+# Registers                                            : 28
+ 1-bit register                                        : 9
+ 12-bit register                                       : 2
+ 2-bit register                                        : 2
+ 22-bit register                                       : 1
+ 5-bit register                                        : 2
+ 6-bit register                                        : 4
+ 8-bit register                                        : 8
+# Latches                                              : 127
+ 1-bit latch                                           : 127
+# Comparators                                          : 10
+ 12-bit comparator equal                               : 5
+ 12-bit comparator greater                             : 1
+ 5-bit comparator equal                                : 2
+ 6-bit comparator not equal                            : 2
+# Multiplexers                                         : 178
+ 1-bit 2-to-1 multiplexer                              : 148
+ 1-bit 3-to-1 multiplexer                              : 3
+ 16-bit 2-to-1 multiplexer                             : 5
+ 2-bit 2-to-1 multiplexer                              : 2
+ 22-bit 2-to-1 multiplexer                             : 1
+ 3-bit 3-to-1 multiplexer                              : 1
+ 32-bit 3-to-1 multiplexer                             : 1
+ 48-bit 2-to-1 multiplexer                             : 1
+ 5-bit 2-to-1 multiplexer                              : 4
+ 6-bit 2-to-1 multiplexer                              : 2
+ 8-bit 2-to-1 multiplexer                              : 9
+ 9-bit 2-to-1 multiplexer                              : 1
+# Tristates                                            : 8
+ 1-bit tristate buffer                                 : 8
+# FSMs                                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1710 - FF/Latch <sram_address_21> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_20> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_19> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_18> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_17> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_16> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_15> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_14> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_13> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_12> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_11> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_10> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_9> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_8> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_7> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_6> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_5> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_4> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_3> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_2> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_1> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_0> (without init value) has a constant value of 0 in block <CMEM>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <control_mem>.
+The following registers are absorbed into counter <write_init_counter>: 1 register on signal <write_init_counter>.
+The following registers are absorbed into counter <sram_address>: 1 register on signal <sram_address>.
+Unit <control_mem> synthesized (advanced).
+
+Synthesizing (advanced) Unit <fifo>.
+The following registers are absorbed into counter <read_address_reg>: 1 register on signal <read_address_reg>.
+The following registers are absorbed into counter <write_address_reg>: 1 register on signal <write_address_reg>.
+Unit <fifo> synthesized (advanced).
+
+Synthesizing (advanced) Unit <ram_dual>.
+INFO:Xst:3226 - The RAM <Mram_ram> will be implemented as a BLOCK RAM, absorbing the following register(s): <read_address_reg>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 64-word x 32-bit                    |          |
+    |     mode           | read-first                          |          |
+    |     clkA           | connected to signal <dualram_clk_i> | rise     |
+    |     weA            | connected to signal <dualram_writeen_i> | high     |
+    |     addrA          | connected to signal <dualram_write_addr_i> |          |
+    |     diA            | connected to signal <dualram_writedata_i> |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 64-word x 32-bit                    |          |
+    |     mode           | read-first                          |          |
+    |     clkB           | connected to signal <dualram_clk_i> | rise     |
+    |     addrB          | connected to signal <dualram_read_addr_i> |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <ram_dual> synthesized (advanced).
+
+Synthesizing (advanced) Unit <spi_init>.
+The following registers are absorbed into counter <counter_operation>: 1 register on signal <counter_operation>.
+Unit <spi_init> synthesized (advanced).
+
+Synthesizing (advanced) Unit <spi_microSD>.
+The following registers are absorbed into counter <counter_divider>: 1 register on signal <counter_divider>.
+The following registers are absorbed into counter <word_counter_wroper>: 1 register on signal <word_counter_wroper>.
+The following registers are absorbed into counter <word_counter_send>: 1 register on signal <word_counter_send>.
+The following registers are absorbed into counter <word_counter>: 1 register on signal <word_counter>.
+Unit <spi_microSD> synthesized (advanced).
+
+Synthesizing (advanced) Unit <spi_perifericos>.
+The following registers are absorbed into counter <counter_divider>: 1 register on signal <counter_divider>.
+The following registers are absorbed into counter <word_counter_send>: 1 register on signal <word_counter_send>.
+The following registers are absorbed into counter <word_counter>: 1 register on signal <word_counter>.
+Unit <spi_perifericos> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 64x32-bit dual-port block RAM                         : 1
+# Multipliers                                          : 1
+ 8x3-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 7
+ 12-bit adder                                          : 5
+ 6-bit adder                                           : 2
+# Counters                                             : 12
+ 12-bit up counter                                     : 2
+ 22-bit up counter                                     : 1
+ 5-bit up counter                                      : 2
+ 6-bit up counter                                      : 3
+ 8-bit up counter                                      : 4
+# Registers                                            : 45
+ Flip-Flops                                            : 45
+# Comparators                                          : 10
+ 12-bit comparator equal                               : 5
+ 12-bit comparator greater                             : 1
+ 5-bit comparator equal                                : 2
+ 6-bit comparator not equal                            : 2
+# Multiplexers                                         : 186
+ 1-bit 2-to-1 multiplexer                              : 163
+ 1-bit 3-to-1 multiplexer                              : 3
+ 16-bit 2-to-1 multiplexer                             : 5
+ 2-bit 2-to-1 multiplexer                              : 2
+ 22-bit 2-to-1 multiplexer                             : 1
+ 3-bit 3-to-1 multiplexer                              : 1
+ 32-bit 3-to-1 multiplexer                             : 1
+ 48-bit 2-to-1 multiplexer                             : 1
+ 5-bit 2-to-1 multiplexer                              : 2
+ 6-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 5
+ 9-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <SPI_MODULE/spi_1/A1/FSM_0> on signal <state[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 10    | 10
+ 11    | 11
+-------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <SPI_MODULE/spi_2/FSM_1> on signal <state[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 11    | 11
+ 10    | 10
+ 00    | 00
+-------------------
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_7> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_6> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_5> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_4> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_3> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_2> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_1> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_MOSI_0> (without init value) has a constant value of 0 in block <spi_perifericos>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <sram_address_21> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_20> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_19> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_18> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_17> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_16> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_15> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_14> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_13> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_12> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_11> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_10> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_9> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_8> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_7> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_6> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_5> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_4> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_3> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_2> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_1> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sram_address_0> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_init_counter_5> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_init_counter_4> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_init_counter_3> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_init_counter_2> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_init_counter_1> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_init_counter_0> (without init value) has a constant value of 0 in block <control_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2973 - All outputs of instance <FIFO1> of block <fifo> are unconnected in block <bootstrap>. Underlying logic will be removed.
+WARNING:Xst:2677 - Node <write_enable> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2042 - Unit spi_microSD: 8 internal tristates are replaced by logic (pull-up yes): R1<0>, R1<1>, R1<2>, R1<3>, R1<4>, R1<5>, R1<6>, R1<7>.
+
+Optimizing unit <bootstrap> ...
+
+Optimizing unit <spi> ...
+
+Optimizing unit <spi_init> ...
+
+Optimizing unit <spi_microSD> ...
+
+Optimizing unit <spi_perifericos> ...
+
+Optimizing unit <fifo> ...
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_31> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_0> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_1> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_3> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_4> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_2> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_5> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_6> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_7> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_8> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_9> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_10> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_11> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_12> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_13> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_14> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_15> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_16> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_18> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_19> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_17> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_20> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_21> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_22> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_23> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_24> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_25> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_26> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_27> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_28> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_29> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/spi_data_o_30> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_0> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_8> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_16> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_24> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_1> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_9> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_17> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_25> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_2> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_10> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_18> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_26> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_3> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_11> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_19> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_27> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_4> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_12> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_20> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_28> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_5> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_13> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_21> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_29> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_6> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_14> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_22> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_30> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_7> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_15> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_23> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/reg_data_MISO_31> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_1/A1/word_counter_send[11]_word_counter_send[11]_DLATCH_59_q> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_15> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_0> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_2> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_3> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_1> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_4> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_5> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_6> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_7> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_8> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_9> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_11> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_12> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_10> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_13> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/spi_data_o_14> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_0> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_1> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_2> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_3> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_5> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_6> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_4> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_7> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_8> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_9> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_10> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_11> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_12> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_14> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_15> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/reg_data_MISO_13> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_7> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_6> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_5> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_4> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_3> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_2> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_1> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:2677 - Node <SPI_MODULE/spi_2/received_reg_0> of sequential type is unconnected in block <bootstrap>.
+WARNING:Xst:1710 - FF/Latch <SPI_MODULE/spi_1/A2/counter_operation_7> (without init value) has a constant value of 0 in block <bootstrap>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <SPI_MODULE/spi_1/A2/counter_operation_6> (without init value) has a constant value of 0 in block <bootstrap>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <SPI_MODULE/spi_1/A2/counter_operation_5> (without init value) has a constant value of 0 in block <bootstrap>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <SPI_MODULE/spi_1/A2/counter_operation_4> (without init value) has a constant value of 0 in block <bootstrap>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <SPI_MODULE/spi_2/state_FSM_FFd2> in Unit <bootstrap> is equivalent to the following FF/Latch, which will be removed : <SPI_MODULE/spi_2/state_FSM_FFd1> 
+
+Mapping all equations...
+WARNING:Xst:1710 - FF/Latch <SPI_MODULE/spi_2/complete_word> (without init value) has a constant value of 0 in block <bootstrap>. This FF/Latch will be trimmed during the optimization process.
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block bootstrap, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 99
+ Flip-Flops                                            : 99
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : bootstrap.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 549
+#      GND                         : 1
+#      INV                         : 7
+#      LUT1                        : 37
+#      LUT2                        : 19
+#      LUT3                        : 101
+#      LUT4                        : 32
+#      LUT5                        : 84
+#      LUT6                        : 161
+#      MUXCY                       : 46
+#      MUXF7                       : 8
+#      VCC                         : 1
+#      XORCY                       : 52
+# FlipFlops/Latches                : 120
+#      FD                          : 1
+#      FDC                         : 29
+#      FDC_1                       : 4
+#      FDCE                        : 35
+#      FDCE_1                      : 2
+#      FDP                         : 9
+#      FDP_1                       : 18
+#      FDR                         : 1
+#      LD                          : 21
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 142
+#      IBUF                        : 89
+#      OBUF                        : 53
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             120  out of  126800     0%  
+ Number of Slice LUTs:                  441  out of  63400     0%  
+    Number used as Logic:               441  out of  63400     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    452
+   Number with an unused Flip Flop:     332  out of    452    73%  
+   Number with an unused LUT:            11  out of    452     2%  
+   Number of fully used LUT-FF pairs:   109  out of    452    24%  
+   Number of unique control sets:        20
+
+IO Utilization: 
+ Number of IOs:                         144
+ Number of bonded IOBs:                 143  out of    210    68%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+---------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------+
+Clock Signal                                                                                                                           | Clock buffer(FF name)                                                               | Load  |
+---------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------+
+master_clk_i                                                                                                                           | BUFGP                                                                               | 57    |
+SPI_MODULE/spi_1/A1/SCK                                                                                                                | BUFG                                                                                | 25    |
+SPI_MODULE/spi_1/A1/word_counter_send[11]_PWR_9_o_Select_66_o(SPI_MODULE/spi_1/A1/Mmux_word_counter_send[11]_PWR_9_o_Select_66_o13:O)  | NONE(*)(SPI_MODULE/spi_1/A1/data_out_MOSI_0)                                        | 8     |
+SPI_MODULE/spi_1/A1/word_counter_send[11]_GND_54_o_Select_86_o(SPI_MODULE/spi_1/A1/Mmux_word_counter_send[11]_GND_54_o_Select_86_o13:O)| NONE(*)(SPI_MODULE/spi_1/A1/word_counter_send[11]_word_counter_send[11]_DLATCH_46_q)| 8     |
+SPI_MODULE/spi_1/A1/state[1]_PWR_8_o_Mux_23_o(SPI_MODULE/spi_1/A1/state[1]_PWR_8_o_Mux_23_o1:O)                                        | NONE(*)(SPI_MODULE/spi_1/A1/spi_doneflag_o)                                         | 1     |
+SPI_MODULE/spi_1/A1/state_FSM_FFd1                                                                                                     | NONE(SPI_MODULE/spi_1/A1/SS)                                                        | 1     |
+SPI_MODULE/spi_1/A1/_n0562(SPI_MODULE/spi_1/A1/_n05625:O)                                                                              | NONE(*)(SPI_MODULE/spi_1/A1/complete_word)                                          | 1     |
+SPI_MODULE/spi_1/A1/_n0563(SPI_MODULE/spi_1/A1/_n05633:O)                                                                              | NONE(*)(SPI_MODULE/spi_1/A1/spi_flagdatawr_o)                                       | 1     |
+SPI_MODULE/spi_2/SCK                                                                                                                   | NONE(SPI_MODULE/spi_2/word_counter_7)                                               | 17    |
+SPI_MODULE/spi_2/state_FSM_FFd2                                                                                                        | NONE(SPI_MODULE/spi_2/spi_doneflag_o)                                               | 1     |
+---------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------+
+(*) These 5 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 4.484ns (Maximum Frequency: 223.015MHz)
+   Minimum input arrival time before clock: 4.277ns
+   Maximum output required time after clock: 3.271ns
+   Maximum combinational path delay: 1.616ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'master_clk_i'
+  Clock period: 3.910ns (frequency: 255.754MHz)
+  Total number of paths / destination ports: 761 / 119
+-------------------------------------------------------------------------
+Delay:               1.955ns (Levels of Logic = 1)
+  Source:            SPI_MODULE/spi_1/A1/clear_reg_word (FF)
+  Destination:       SPI_MODULE/spi_1/A1/counter_divider_4 (FF)
+  Source Clock:      master_clk_i rising
+  Destination Clock: master_clk_i falling
+
+  Data Path: SPI_MODULE/spi_1/A1/clear_reg_word to SPI_MODULE/spi_1/A1/counter_divider_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.478   0.427  SPI_MODULE/spi_1/A1/clear_reg_word (SPI_MODULE/spi_1/A1/clear_reg_word)
+     LUT2:I1->O            6   0.124   0.432  SPI_MODULE/spi_1/A1/spi_rst_i_clear_reg_word_OR_143_o1 (SPI_MODULE/spi_1/A1/spi_rst_i_clear_reg_word_OR_143_o)
+     FDCE_1:CLR                0.494          SPI_MODULE/spi_1/A1/SCK
+    ----------------------------------------
+    Total                      1.955ns (1.096ns logic, 0.859ns route)
+                                       (56.1% logic, 43.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'SPI_MODULE/spi_1/A1/SCK'
+  Clock period: 4.484ns (frequency: 223.015MHz)
+  Total number of paths / destination ports: 138 / 25
+-------------------------------------------------------------------------
+Delay:               2.242ns (Levels of Logic = 2)
+  Source:            SPI_MODULE/spi_1/A1/word_counter_6 (FF)
+  Destination:       SPI_MODULE/spi_1/A1/transmission_reg_0 (FF)
+  Source Clock:      SPI_MODULE/spi_1/A1/SCK rising
+  Destination Clock: SPI_MODULE/spi_1/A1/SCK falling
+
+  Data Path: SPI_MODULE/spi_1/A1/word_counter_6 to SPI_MODULE/spi_1/A1/transmission_reg_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.478   0.953  SPI_MODULE/spi_1/A1/word_counter_6 (SPI_MODULE/spi_1/A1/word_counter_6)
+     LUT6:I0->O           18   0.124   0.533  SPI_MODULE/spi_1/A1/complete_word_word_counter[7]_OR_88_o11 (SPI_MODULE/spi_1/A1/complete_word_word_counter[7]_OR_88_o1)
+     LUT6:I5->O            1   0.124   0.000  SPI_MODULE/spi_1/A1/mux81 (SPI_MODULE/spi_1/A1/transmission_reg[6]_data_out_MOSI[7]_mux_218_OUT<0>)
+     FDP_1:D                   0.030          SPI_MODULE/spi_1/A1/transmission_reg_0
+    ----------------------------------------
+    Total                      2.242ns (0.756ns logic, 1.486ns route)
+                                       (33.7% logic, 66.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'SPI_MODULE/spi_2/SCK'
+  Clock period: 4.350ns (frequency: 229.885MHz)
+  Total number of paths / destination ports: 124 / 17
+-------------------------------------------------------------------------
+Delay:               2.175ns (Levels of Logic = 2)
+  Source:            SPI_MODULE/spi_2/word_counter_3 (FF)
+  Destination:       SPI_MODULE/spi_2/transmission_reg_6 (FF)
+  Source Clock:      SPI_MODULE/spi_2/SCK rising
+  Destination Clock: SPI_MODULE/spi_2/SCK falling
+
+  Data Path: SPI_MODULE/spi_2/word_counter_3 to SPI_MODULE/spi_2/transmission_reg_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              8   0.478   0.965  SPI_MODULE/spi_2/word_counter_3 (SPI_MODULE/spi_2/word_counter_3)
+     LUT5:I0->O            6   0.124   0.454  SPI_MODULE/spi_2/Mmux_SCK_SPI11_SW3 (N43)
+     LUT6:I5->O            1   0.124   0.000  SPI_MODULE/spi_2/mux116 (SPI_MODULE/spi_2/transmission_reg[6]_data_out_MOSI[7]_mux_153_OUT<1>)
+     FDP_1:D                   0.030          SPI_MODULE/spi_2/transmission_reg_1
+    ----------------------------------------
+    Total                      2.175ns (0.756ns logic, 1.419ns route)
+                                       (34.8% logic, 65.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'master_clk_i'
+  Total number of paths / destination ports: 270 / 61
+-------------------------------------------------------------------------
+Offset:              4.277ns (Levels of Logic = 6)
+  Source:            bootstrap_init_i (PAD)
+  Destination:       SPI_MODULE/spi_1/A1/counter_divider_3 (FF)
+  Destination Clock: master_clk_i falling
+
+  Data Path: bootstrap_init_i to SPI_MODULE/spi_1/A1/counter_divider_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           104   0.001   0.944  bootstrap_init_i_IBUF (bootstrap_init_i_IBUF)
+     LUT4:I0->O            5   0.124   0.946  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o81 (SPI_MODULE/spi_1/spi_statusreg<7>)
+     LUT5:I0->O            4   0.124   0.959  SPI_MODULE/spi_1/A1/counter_divider[4]_GND_8_o_equal_183_o5_SW2 (N59)
+     LUT6:I0->O            1   0.124   0.000  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o71_SW8_F (N99)
+     MUXF7:I0->O           1   0.365   0.536  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o71_SW8 (N85)
+     LUT6:I4->O            1   0.124   0.000  SPI_MODULE/spi_1/A1/Mcount_counter_divider_xor<3>11 (SPI_MODULE/spi_1/A1/Mcount_counter_divider3)
+     FDC:D                     0.030          SPI_MODULE/spi_1/A1/counter_divider_3
+    ----------------------------------------
+    Total                      4.277ns (0.892ns logic, 3.385ns route)
+                                       (20.9% logic, 79.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'SPI_MODULE/spi_1/A1/SCK'
+  Total number of paths / destination ports: 99 / 42
+-------------------------------------------------------------------------
+Offset:              3.237ns (Levels of Logic = 4)
+  Source:            bootstrap_init_i (PAD)
+  Destination:       SPI_MODULE/spi_1/A1/MOSI (FF)
+  Destination Clock: SPI_MODULE/spi_1/A1/SCK falling
+
+  Data Path: bootstrap_init_i to SPI_MODULE/spi_1/A1/MOSI
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           104   0.001   1.087  bootstrap_init_i_IBUF (bootstrap_init_i_IBUF)
+     LUT5:I0->O           18   0.124   0.828  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o31 (SPI_MODULE/spi_1/spi_statusreg<2>)
+     LUT3:I0->O            1   0.124   0.919  SPI_MODULE/spi_1/A1/word_counter[7]_GND_8_o_equal_216_o<7>1_SW1 (N25)
+     LUT5:I0->O            1   0.124   0.000  SPI_MODULE/spi_1/A1/Mmux_transmission_reg[6]_data_out_MOSI[0]_MUX_210_o11 (SPI_MODULE/spi_1/A1/transmission_reg[6]_data_out_MOSI[0]_MUX_210_o)
+     FDP_1:D                   0.030          SPI_MODULE/spi_1/A1/MOSI
+    ----------------------------------------
+    Total                      3.237ns (0.403ns logic, 2.834ns route)
+                                       (12.4% logic, 87.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'SPI_MODULE/spi_1/A1/word_counter_send[11]_PWR_9_o_Select_66_o'
+  Total number of paths / destination ports: 126 / 8
+-------------------------------------------------------------------------
+Offset:              3.896ns (Levels of Logic = 5)
+  Source:            bootstrap_init_i (PAD)
+  Destination:       SPI_MODULE/spi_1/A1/data_out_MOSI_0 (LATCH)
+  Destination Clock: SPI_MODULE/spi_1/A1/word_counter_send[11]_PWR_9_o_Select_66_o falling
+
+  Data Path: bootstrap_init_i to SPI_MODULE/spi_1/A1/data_out_MOSI_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           104   0.001   1.087  bootstrap_init_i_IBUF (bootstrap_init_i_IBUF)
+     LUT5:I0->O           21   0.124   0.846  SPI_MODULE/spi_1/A2/spi_datainit_o<33>1 (SPI_MODULE/spi_1/spi_data<32>)
+     LUT6:I3->O            1   0.124   0.919  SPI_MODULE/spi_1/A1/Mmux_word_counter_send[11]_spi_data_i[40]_Select_79_o46 (SPI_MODULE/spi_1/A1/Mmux_word_counter_send[11]_spi_data_i[40]_Select_79_o46)
+     LUT5:I0->O            1   0.124   0.536  SPI_MODULE/spi_1/A1/Mmux_word_counter_send[11]_spi_data_i[40]_Select_79_o47 (SPI_MODULE/spi_1/A1/Mmux_word_counter_send[11]_spi_data_i[40]_Select_79_o47)
+     LUT5:I3->O            1   0.124   0.000  SPI_MODULE/spi_1/A1/Mmux_word_counter_send[11]_spi_data_i[40]_Select_79_o410 (SPI_MODULE/spi_1/A1/word_counter_send[11]_spi_data_i[40]_Select_79_o)
+     LD:D                      0.011          SPI_MODULE/spi_1/A1/data_out_MOSI_0
+    ----------------------------------------
+    Total                      3.896ns (0.508ns logic, 3.388ns route)
+                                       (13.0% logic, 87.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'SPI_MODULE/spi_1/A1/state_FSM_FFd1'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.080ns (Levels of Logic = 2)
+  Source:            bootstrap_init_i (PAD)
+  Destination:       SPI_MODULE/spi_1/A1/SS (LATCH)
+  Destination Clock: SPI_MODULE/spi_1/A1/state_FSM_FFd1 falling
+
+  Data Path: bootstrap_init_i to SPI_MODULE/spi_1/A1/SS
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           104   0.001   0.944  bootstrap_init_i_IBUF (bootstrap_init_i_IBUF)
+     LUT5:I1->O            1   0.124   0.000  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o21 (SPI_MODULE/spi_1/spi_statusreg<1>)
+     LD:D                      0.011          SPI_MODULE/spi_1/A1/SS
+    ----------------------------------------
+    Total                      1.080ns (0.136ns logic, 0.944ns route)
+                                       (12.6% logic, 87.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'SPI_MODULE/spi_1/A1/_n0562'
+  Total number of paths / destination ports: 8 / 1
+-------------------------------------------------------------------------
+Offset:              2.122ns (Levels of Logic = 4)
+  Source:            spi_statusreg_i<8> (PAD)
+  Destination:       SPI_MODULE/spi_1/A1/complete_word (LATCH)
+  Destination Clock: SPI_MODULE/spi_1/A1/_n0562 falling
+
+  Data Path: spi_statusreg_i<8> to SPI_MODULE/spi_1/A1/complete_word
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            36   0.001   0.869  spi_statusreg_i_8_IBUF (spi_statusreg_i_8_IBUF)
+     LUT3:I0->O            1   0.124   0.421  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o5_SW0 (N2)
+     LUT6:I5->O            5   0.124   0.448  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o5 (SPI_MODULE/spi_1/spi_statusreg<4>)
+     LUT6:I5->O            1   0.124   0.000  SPI_MODULE/spi_1/A1/word_counter_send[11]_GND_8_o_Select_81_o2 (SPI_MODULE/spi_1/A1/word_counter_send[11]_GND_8_o_Select_81_o)
+     LD:D                      0.011          SPI_MODULE/spi_1/A1/complete_word
+    ----------------------------------------
+    Total                      2.122ns (0.384ns logic, 1.738ns route)
+                                       (18.1% logic, 81.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'SPI_MODULE/spi_1/A1/_n0563'
+  Total number of paths / destination ports: 4 / 1
+-------------------------------------------------------------------------
+Offset:              2.169ns (Levels of Logic = 3)
+  Source:            bootstrap_init_i (PAD)
+  Destination:       SPI_MODULE/spi_1/A1/spi_flagdatawr_o (LATCH)
+  Destination Clock: SPI_MODULE/spi_1/A1/_n0563 falling
+
+  Data Path: bootstrap_init_i to SPI_MODULE/spi_1/A1/spi_flagdatawr_o
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           104   0.001   0.944  bootstrap_init_i_IBUF (bootstrap_init_i_IBUF)
+     LUT4:I0->O            8   0.124   0.965  SPI_MODULE/spi_1/A2/Mmux_spi_statusreginit_o41 (SPI_MODULE/spi_1/spi_statusreg<3>)
+     LUT6:I1->O            1   0.124   0.000  SPI_MODULE/spi_1/A1/word_counter_send[11]_GND_8_o_Select_83_o1 (SPI_MODULE/spi_1/A1/word_counter_send[11]_GND_8_o_Select_83_o)
+     LD:D                      0.011          SPI_MODULE/spi_1/A1/spi_flagdatawr_o
+    ----------------------------------------
+    Total                      2.169ns (0.260ns logic, 1.909ns route)
+                                       (12.0% logic, 88.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'SPI_MODULE/spi_2/SCK'
+  Total number of paths / destination ports: 27 / 9
+-------------------------------------------------------------------------
+Offset:              2.140ns (Levels of Logic = 3)
+  Source:            spi_statusreg_i<8> (PAD)
+  Destination:       SPI_MODULE/spi_2/MOSI (FF)
+  Destination Clock: SPI_MODULE/spi_2/SCK falling
+
+  Data Path: spi_statusreg_i<8> to SPI_MODULE/spi_2/MOSI
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            36   0.001   0.869  spi_statusreg_i_8_IBUF (spi_statusreg_i_8_IBUF)
+     LUT3:I0->O            9   0.124   0.992  SPI_MODULE/Mmux_statusreg_spi_221 (SPI_MODULE/statusreg_spi_2<1>)
+     LUT6:I0->O            1   0.124   0.000  SPI_MODULE/spi_2/mux81 (SPI_MODULE/spi_2/transmission_reg[6]_data_out_MOSI[7]_mux_153_OUT<0>)
+     FDP_1:D                   0.030          SPI_MODULE/spi_2/transmission_reg_0
+    ----------------------------------------
+    Total                      2.140ns (0.279ns logic, 1.861ns route)
+                                       (13.0% logic, 87.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'SPI_MODULE/spi_2/state_FSM_FFd2'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.684ns (Levels of Logic = 2)
+  Source:            SPI_MODULE/spi_2/spi_doneflag_o (LATCH)
+  Destination:       spi_flagreg_o<2> (PAD)
+  Source Clock:      SPI_MODULE/spi_2/state_FSM_FFd2 falling
+
+  Data Path: SPI_MODULE/spi_2/spi_doneflag_o to spi_flagreg_o<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.625   0.536  SPI_MODULE/spi_2/spi_doneflag_o (SPI_MODULE/spi_2/spi_doneflag_o)
+     LUT4:I2->O            1   0.124   0.399  SPI_MODULE/Mmux_spi_flagreg_o31 (spi_flagreg_o_2_OBUF)
+     OBUF:I->O                 0.000          spi_flagreg_o_2_OBUF (spi_flagreg_o<2>)
+    ----------------------------------------
+    Total                      1.684ns (0.749ns logic, 0.935ns route)
+                                       (44.5% logic, 55.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'SPI_MODULE/spi_1/A1/_n0563'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.575ns (Levels of Logic = 2)
+  Source:            SPI_MODULE/spi_1/A1/spi_flagdatawr_o (LATCH)
+  Destination:       spi_flagreg_o<2> (PAD)
+  Source Clock:      SPI_MODULE/spi_1/A1/_n0563 falling
+
+  Data Path: SPI_MODULE/spi_1/A1/spi_flagdatawr_o to spi_flagreg_o<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               2   0.625   0.427  SPI_MODULE/spi_1/A1/spi_flagdatawr_o (SPI_MODULE/spi_1/A1/spi_flagdatawr_o)
+     LUT4:I3->O            1   0.124   0.399  SPI_MODULE/Mmux_spi_flagreg_o31 (spi_flagreg_o_2_OBUF)
+     OBUF:I->O                 0.000          spi_flagreg_o_2_OBUF (spi_flagreg_o<2>)
+    ----------------------------------------
+    Total                      1.575ns (0.749ns logic, 0.826ns route)
+                                       (47.6% logic, 52.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'SPI_MODULE/spi_1/A1/state[1]_PWR_8_o_Mux_23_o'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.575ns (Levels of Logic = 2)
+  Source:            SPI_MODULE/spi_1/A1/spi_doneflag_o (LATCH)
+  Destination:       spi_flagreg_o<1> (PAD)
+  Source Clock:      SPI_MODULE/spi_1/A1/state[1]_PWR_8_o_Mux_23_o falling
+
+  Data Path: SPI_MODULE/spi_1/A1/spi_doneflag_o to spi_flagreg_o<1>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               2   0.625   0.427  SPI_MODULE/spi_1/A1/spi_doneflag_o (SPI_MODULE/spi_1/A1/spi_doneflag_o)
+     LUT3:I2->O            1   0.124   0.399  SPI_MODULE/Mmux_spi_flagreg_o21 (spi_flagreg_o_1_OBUF)
+     OBUF:I->O                 0.000          spi_flagreg_o_1_OBUF (spi_flagreg_o<1>)
+    ----------------------------------------
+    Total                      1.575ns (0.749ns logic, 0.826ns route)
+                                       (47.6% logic, 52.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'SPI_MODULE/spi_1/A1/_n0562'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              2.496ns (Levels of Logic = 3)
+  Source:            SPI_MODULE/spi_1/A1/complete_word (LATCH)
+  Destination:       SCK_SPI (PAD)
+  Source Clock:      SPI_MODULE/spi_1/A1/_n0562 falling
+
+  Data Path: SPI_MODULE/spi_1/A1/complete_word to SCK_SPI
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               5   0.625   0.803  SPI_MODULE/spi_1/A1/complete_word (SPI_MODULE/spi_1/A1/complete_word)
+     LUT4:I0->O            1   0.124   0.421  SPI_MODULE/Mmux_SCK_SPI1_SW0 (N0)
+     LUT6:I5->O            1   0.124   0.399  SPI_MODULE/Mmux_SCK_SPI1 (SCK_SPI_OBUF)
+     OBUF:I->O                 0.000          SCK_SPI_OBUF (SCK_SPI)
+    ----------------------------------------
+    Total                      2.496ns (0.873ns logic, 1.623ns route)
+                                       (35.0% logic, 65.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'master_clk_i'
+  Total number of paths / destination ports: 6 / 2
+-------------------------------------------------------------------------
+Offset:              2.282ns (Levels of Logic = 3)
+  Source:            SPI_MODULE/spi_1/A1/SCK (FF)
+  Destination:       SCK_SPI (PAD)
+  Source Clock:      master_clk_i falling
+
+  Data Path: SPI_MODULE/spi_1/A1/SCK to SCK_SPI
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE_1:C->Q           3   0.484   0.730  SPI_MODULE/spi_1/A1/SCK (SPI_MODULE/spi_1/A1/SCK)
+     LUT4:I1->O            1   0.124   0.421  SPI_MODULE/Mmux_SCK_SPI1_SW0 (N0)
+     LUT6:I5->O            1   0.124   0.399  SPI_MODULE/Mmux_SCK_SPI1 (SCK_SPI_OBUF)
+     OBUF:I->O                 0.000          SCK_SPI_OBUF (SCK_SPI)
+    ----------------------------------------
+    Total                      2.282ns (0.732ns logic, 1.550ns route)
+                                       (32.1% logic, 67.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'SPI_MODULE/spi_2/SCK'
+  Total number of paths / destination ports: 16 / 3
+-------------------------------------------------------------------------
+Offset:              3.210ns (Levels of Logic = 4)
+  Source:            SPI_MODULE/spi_2/word_counter_2 (FF)
+  Destination:       SCK_SPI (PAD)
+  Source Clock:      SPI_MODULE/spi_2/SCK rising
+
+  Data Path: SPI_MODULE/spi_2/word_counter_2 to SCK_SPI
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              4   0.478   0.556  SPI_MODULE/spi_2/word_counter_2 (SPI_MODULE/spi_2/word_counter_2)
+     LUT2:I0->O           10   0.124   0.480  SPI_MODULE/spi_2/Mmux_SCK_SPI11_SW0 (N18)
+     LUT6:I5->O            2   0.124   0.925  SPI_MODULE/spi_2/Mmux_SCK_SPI11 (SPI_MODULE/spi_2/Mmux_SCK_SPI11)
+     LUT6:I1->O            1   0.124   0.399  SPI_MODULE/Mmux_SCK_SPI1 (SCK_SPI_OBUF)
+     OBUF:I->O                 0.000          SCK_SPI_OBUF (SCK_SPI)
+    ----------------------------------------
+    Total                      3.210ns (0.850ns logic, 2.360ns route)
+                                       (26.5% logic, 73.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'SPI_MODULE/spi_1/A1/SCK'
+  Total number of paths / destination ports: 8 / 2
+-------------------------------------------------------------------------
+Offset:              3.271ns (Levels of Logic = 4)
+  Source:            SPI_MODULE/spi_1/A1/word_counter_6 (FF)
+  Destination:       SCK_SPI (PAD)
+  Source Clock:      SPI_MODULE/spi_1/A1/SCK rising
+
+  Data Path: SPI_MODULE/spi_1/A1/word_counter_6 to SCK_SPI
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.478   0.953  SPI_MODULE/spi_1/A1/word_counter_6 (SPI_MODULE/spi_1/A1/word_counter_6)
+     LUT6:I0->O           18   0.124   0.648  SPI_MODULE/spi_1/A1/complete_word_word_counter[7]_OR_88_o11 (SPI_MODULE/spi_1/A1/complete_word_word_counter[7]_OR_88_o1)
+     LUT4:I2->O            1   0.124   0.421  SPI_MODULE/Mmux_SCK_SPI1_SW0 (N0)
+     LUT6:I5->O            1   0.124   0.399  SPI_MODULE/Mmux_SCK_SPI1 (SCK_SPI_OBUF)
+     OBUF:I->O                 0.000          SCK_SPI_OBUF (SCK_SPI)
+    ----------------------------------------
+    Total                      3.271ns (0.850ns logic, 2.421ns route)
+                                       (26.0% logic, 74.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'SPI_MODULE/spi_1/A1/state_FSM_FFd1'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              1.569ns (Levels of Logic = 2)
+  Source:            SPI_MODULE/spi_1/A1/SS (LATCH)
+  Destination:       SS (PAD)
+  Source Clock:      SPI_MODULE/spi_1/A1/state_FSM_FFd1 falling
+
+  Data Path: SPI_MODULE/spi_1/A1/SS to SS
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.625   0.421  SPI_MODULE/spi_1/A1/SS (SPI_MODULE/spi_1/A1/SS)
+     LUT6:I5->O            1   0.124   0.399  SPI_MODULE/Mmux_SS11 (SS_OBUF)
+     OBUF:I->O                 0.000          SS_OBUF (SS)
+    ----------------------------------------
+    Total                      1.569ns (0.749ns logic, 0.820ns route)
+                                       (47.7% logic, 52.3% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 144 / 50
+-------------------------------------------------------------------------
+Delay:               1.616ns (Levels of Logic = 3)
+  Source:            spi_statusreg_i<7> (PAD)
+  Destination:       SS (PAD)
+
+  Data Path: spi_statusreg_i<7> to SS
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            36   0.001   1.092  spi_statusreg_i_7_IBUF (spi_statusreg_i_7_IBUF)
+     LUT6:I0->O            1   0.124   0.399  SPI_MODULE/Mmux_SS11 (SS_OBUF)
+     OBUF:I->O                 0.000          SS_OBUF (SS)
+    ----------------------------------------
+    Total                      1.616ns (0.125ns logic, 1.491ns route)
+                                       (7.7% logic, 92.3% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock SPI_MODULE/spi_1/A1/SCK
+-------------------------------------------------------------+---------+---------+---------+---------+
+                                                             | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                                                 |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-------------------------------------------------------------+---------+---------+---------+---------+
+SPI_MODULE/spi_1/A1/SCK                                      |    2.362|         |    2.242|         |
+SPI_MODULE/spi_1/A1/word_counter_send[11]_PWR_9_o_Select_66_o|         |         |    2.364|         |
+master_clk_i                                                 |    2.513|         |    3.556|         |
+-------------------------------------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_1/A1/_n0562
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+master_clk_i   |         |         |   10.224|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_1/A1/_n0563
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+master_clk_i   |         |         |    3.387|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_1/A1/state[1]_PWR_8_o_Mux_23_o
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+master_clk_i   |         |         |    1.000|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_1/A1/state_FSM_FFd1
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+master_clk_i   |         |         |    1.685|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_1/A1/word_counter_send[11]_GND_54_o_Select_86_o
+-----------------------+---------+---------+---------+---------+
+                       | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock           |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-----------------------+---------+---------+---------+---------+
+SPI_MODULE/spi_1/A1/SCK|         |         |    0.902|         |
+master_clk_i           |         |         |    3.147|         |
+-----------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_1/A1/word_counter_send[11]_PWR_9_o_Select_66_o
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+master_clk_i   |         |         |   12.675|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_2/SCK
+--------------------+---------+---------+---------+---------+
+                    | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock        |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------+---------+---------+---------+---------+
+SPI_MODULE/spi_2/SCK|    2.257|         |    2.175|         |
+--------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock SPI_MODULE/spi_2/state_FSM_FFd2
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+master_clk_i   |         |         |    0.908|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock master_clk_i
+--------------------------------------------------------------+---------+---------+---------+---------+
+                                                              | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                                                  |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------------------------------------------+---------+---------+---------+---------+
+SPI_MODULE/spi_1/A1/SCK                                       |    3.420|         |         |         |
+SPI_MODULE/spi_1/A1/_n0562                                    |         |    3.113|         |         |
+SPI_MODULE/spi_1/A1/_n0563                                    |         |    3.315|         |         |
+SPI_MODULE/spi_1/A1/state[1]_PWR_8_o_Mux_23_o                 |         |    3.152|         |         |
+SPI_MODULE/spi_1/A1/word_counter_send[11]_GND_54_o_Select_86_o|         |    4.145|         |         |
+SPI_MODULE/spi_2/SCK                                          |    3.354|         |         |         |
+master_clk_i                                                  |    3.463|    1.948|    3.509|         |
+--------------------------------------------------------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 22.00 secs
+Total CPU time to Xst completion: 22.04 secs
+ 
+--> 
+
+Total memory usage is 327388 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  305 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
+

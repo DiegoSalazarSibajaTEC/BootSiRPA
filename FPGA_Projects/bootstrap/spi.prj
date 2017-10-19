@@ -1,0 +1,5 @@
+verilog work "spi_microSD.v"
+verilog work "spi_init.v"
+verilog work "spi_perifericos.v"
+verilog work "spi_microSDHC.v"
+verilog work "spi.v"

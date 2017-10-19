@@ -1,0 +1,25 @@
+
+
+
+// Instantiate the module
+control_mem instance_name (
+    .control_mem_clk_i(control_mem_clk_i), 
+    .control_mem_rst_i(control_mem_rst_i), 
+    .micro_sram_address_i(micro_sram_address_i), 
+    .micro_sram_datain_i(micro_sram_datain_i), 
+    .micro_sram_control(micro_sram_control), 
+    .micro_control(micro_control), 
+    .write_enable_i(write_enable_i), 
+    .fifo_datain_i(fifo_datain_i), 
+    .read_fifo_o(read_fifo_o), 
+    .sram_address_o(sram_address_o), 
+    .sram_datain_o(sram_datain_o), 
+    .sram_cs_o(sram_cs_o), 
+    .sram_we_o(sram_we_o), 
+    .sram_oe_o(sram_oe_o), 
+    .sram_lb_ub_o(sram_lb_ub_o), 
+    .sram_adv_o(sram_adv_o), 
+    .sram_wait_o(sram_wait_o)
+    );
+
+

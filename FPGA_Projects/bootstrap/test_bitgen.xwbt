@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\test.ncd
+OUTFILE=D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap\test.bit
+FAMILY=Artix7
+PART=xc7a100t-1csg324
+WORKINGDIR=D:\Dropbox\TEC\Semestres\XI Semestre-PdG\Github\BootSiRPA\FPGA_Projects\bootstrap
+LICENSE=WebPack
+USER_INFO=211101146_0_0_532

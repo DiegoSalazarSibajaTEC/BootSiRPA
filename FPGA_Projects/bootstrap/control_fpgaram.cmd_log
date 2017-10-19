@@ -1,0 +1,4 @@
+xst -intstyle ise -ifn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.xst" -ofn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.syr" 
+xst -intstyle ise -ifn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.xst" -ofn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.syr" 
+xst -intstyle ise -ifn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.xst" -ofn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.syr" 
+xst -intstyle ise -ifn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.xst" -ofn "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/control_fpgaram.syr" 

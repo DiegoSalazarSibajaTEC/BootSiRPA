@@ -1,0 +1,16 @@
+
+
+
+// Instantiate the module
+fifo instance_name (
+    .fifo_clk_i(fifo_clk_i), 
+    .fifo_rst_i(fifo_rst_i), 
+    .fifo_readflag_i(fifo_readflag_i), 
+    .fifo_writeflag_i(fifo_writeflag_i), 
+    .fifo_writedata_i(fifo_writedata_i), 
+    .fifo_emptyflag_o(fifo_emptyflag_o), 
+    .fifo_fullflag_o(fifo_fullflag_o), 
+    .fifo_readdata_o(fifo_readdata_o)
+    );
+
+
