@@ -1,1 +1,0 @@
-vhdtdtfi -lang verilog -prj bootstrap -o "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap/spi_microSDHC.tfi" -lib work "D:/Dropbox/TEC/Semestres/XI Semestre-PdG/Github/BootSiRPA/FPGA_Projects/bootstrap//spi_microSDHC.v" -module spi_microSDHC -template C:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
