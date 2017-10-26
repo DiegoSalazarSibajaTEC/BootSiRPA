@@ -82,6 +82,8 @@ reg 					complete_word; //*******Se completo envio de una palabra
 
 //***********************Division de la señal spi_statusreg_i*************************
 wire						spi_fbo_i;
+wire						spi_microSDwr_i;
+wire						spi_microSDrd_i;
 wire 						spi_operation_i;
 wire						enable_operation;
 wire [4:0]					clock_divider;
@@ -93,8 +95,8 @@ assign clock_divider	=	(spi_statusreg_i[4:2]==3'b000) ? 5'h00: (spi_statusreg_i[
 				
 
 //********ASIGNACIÓN DE SEÑALES DE SALIDA********************************************
-assign SCK_SPI=(complete_word || word_counter == 8'h00 )? 1'b0:SCK;
-assign SS=(complete_word )? 1'b1:1'b0;
+assign SCK_SPI=(complete_word || word_counter == 8'h00 || word_counter == 8'h01)? 1'b0:SCK;
+assign SS=(complete_word || word_counter == 8'h00)? 1'b1:1'b0;
 always @(posedge spi_clk_i) begin
 	if(complete_word || spi_doneflag_o) begin
 		spi_data_o <= reg_data_MISO;
@@ -121,8 +123,8 @@ always @* begin
 	 case(state)
 		idle:begin
 			clear_reg	=	1'b1;
-			complete_word = 1'b1;
-			if(spi_operation_i && enable_operation)begin
+			complete_word = 1'b0;
+			if(spi_operation_i && flag_edge_detector == 8'b10 && enable_operation)begin
 					next_state	=	send;
 					spi_doneflag_o	=	1'b0;
 			end
@@ -133,8 +135,8 @@ always @* begin
 				next_state	=	finish;
 			end
 			case(word_counter_send) //modificar tamano de palabra es modificar esta seccion
-				8'h00: begin data_out_MOSI = spi_data_i; reg_data_MISO[2*DATA_WIDTH-1:DATA_WIDTH] = received_reg; complete_word = 1'b0; end
-				8'h01: begin data_out_MOSI = 0; reg_data_MISO[DATA_WIDTH-1:0] = received_reg; complete_word = 1'b0; end
+				8'h00: begin data_out_MOSI = spi_data_i; reg_data_MISO[2*DATA_WIDTH-1:DATA_WIDTH] = received_reg; end
+				8'h01: begin data_out_MOSI = 0; reg_data_MISO[DATA_WIDTH-1:0] = received_reg; end
 				8'h02: begin complete_word = 1'b1; end
 			endcase
 		
@@ -144,7 +146,7 @@ always @* begin
 			clear_reg	=	1'b1;
 			next_state	=	idle;
 			spi_doneflag_o	=	1'b1;
-			complete_word = 1'b1;
+			complete_word = 1'b0;
 		end
 		
 		default: next_state	=	finish;
@@ -187,7 +189,7 @@ end
 //***********************Cuenta de bits y palabras********************************
 //**************REINICIA CONTADOR DE BITS*****************************************
 always @(posedge spi_clk_i)begin
-	if(word_counter == 8'h08 && flag_edge_detector == 2'b01)begin
+	if(word_counter == 8'h09 && flag_edge_detector == 2'b01)begin
 		clear_reg_word <= 1'b1;
 	end
 	else begin
@@ -199,7 +201,7 @@ always @(posedge spi_clk_i or posedge spi_rst_i or posedge clear_reg)begin
 	if(spi_rst_i || clear_reg) begin
 		word_counter_send <= 12'h00;
 	end
-	else if(word_counter == 8'h08 && flag_edge_detector == 2'b01)begin
+	else if(word_counter == 8'h09 && flag_edge_detector == 2'b01)begin
 		word_counter_send <= word_counter_send + 12'h001;
 	end
 end
