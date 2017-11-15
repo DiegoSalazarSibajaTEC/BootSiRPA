@@ -11,7 +11,7 @@ Descripción general: Este módulo es una memoria en la cual se encuentran los c
 de inicializacion para la tarjeta SD.
 
 ****************************************************************************************/
-module spi_microSDHC( spi_clk_i, spi_rst_i, spi_statusreg_i, spi_data_i, MISO, spi_init_i, spi_data_o, spi_flagreg_o, MOSI, SS, SCK_SPI, spi_initdone_o);
+module spi_microSDHC( spi_clk_i, spi_rst_i, spi_statusreg_i, spi_data_i, MISO, spi_init_i, spi_data_o, spi_flagreg_o, MOSI, SS, SCK_SPI, spi_initdone_o, spi_initwritemem_o, R1);
 
 //************************OUTPUTS and INPUTS********************************************
 input 				spi_clk_i;
@@ -26,10 +26,11 @@ output wire			MOSI;
 output wire			SS;
 output wire			SCK_SPI;
 output wire			spi_initdone_o;
+output wire			spi_initwritemem_o;
+output wire [7:0] 	R1;
 
 //*************************Señales internas********************************************
 wire [47:0] spi_data;
-wire [7:0] 	R1;
 wire [8:0] 	spi_statusreg;
 
 
@@ -58,7 +59,8 @@ spi_init A2 (
     .spi_flagreg_i(spi_flagreg_o), //
     .spi_datainit_o(spi_data), //
     .spi_statusreginit_o(spi_statusreg), //
-    .spi_initdone_o(spi_initdone_o)
+    .spi_initdone_o(spi_initdone_o),
+	.spi_initwritemem_o(spi_initwritemem_o)
     );
 
 endmodule

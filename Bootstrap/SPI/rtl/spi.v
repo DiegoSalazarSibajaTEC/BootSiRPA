@@ -12,7 +12,8 @@ del protocolo SPI a activar por el microprocesador o el controlador del bootstra
 Se encuentran instanciados los modulos spi_microSDHC.v y spi_perifericos.v
 
 ****************************************************************************************/
-module spi #(parameter DATA_WIDTH = 8)(spi_clk_i, spi_rst_i, spi_statusreg_i, spi_data_i, spi_init_i, MISO, MOSI, SCK_SPI, SS, spi_initdone_o, spi_flagreg_o, spi_data_o);
+module spi #(parameter DATA_WIDTH = 8)(spi_clk_i, spi_rst_i, spi_statusreg_i, spi_data_i, spi_init_i, MISO, MOSI, SCK_SPI, SS, spi_initdone_o,
+										spi_flagreg_o, spi_data_o,spi_initwritemem_o, R1);
 
 //************************OUTPUTS and INPUTS********************************************
 input 				spi_clk_i;//************Reloj master
@@ -55,6 +56,8 @@ output wire 		SCK_SPI;//**************SCK del SPI
 **************************************************************************************/
 output wire [2:0]	spi_flagreg_o;
 output wire [31:0] 	spi_data_o;//Datos de salida del SPI
+output wire			spi_initwritemem_o;
+output wire [7:0]   R1;
 
 //***************************Señales y mulplexación de señales************************
 wire 		MOSI_spi_1;
@@ -91,7 +94,9 @@ spi_microSDHC spi_1 (
     .MOSI(MOSI_spi_1), //
     .SS(SS_spi_1), //
     .SCK_SPI(SCK_SPI_spi_1), //
-    .spi_initdone_o(spi_initdone_o)//
+    .spi_initdone_o(spi_initdone_o),//
+	.spi_initwritemem_o(spi_initwritemem_o),
+	.R1(R1)
     );
 
 spi_perifericos #(.DATA_WIDTH(DATA_WIDTH)) spi_2 (

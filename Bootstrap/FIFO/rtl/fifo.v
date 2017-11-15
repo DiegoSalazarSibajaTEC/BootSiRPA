@@ -52,7 +52,7 @@ ram_dual #(.ADDRESS_WIDTH(ADDRESS_WIDTH), .DATA_WIDTH(DATA_WIDTH)) ram
 always @(posedge fifo_clk_i or posedge fifo_rst_i)begin
 	if (fifo_rst_i)
 		begin
-				write_address_reg <= 0;
+				write_address_reg <= 6'd1;
 				read_address_reg  <= 0;
 				full_reg          <= 1'b0;
 				empty_reg         <= 1'b1;
@@ -85,7 +85,7 @@ always @*
 	if(fifo_readflag_i && ~empty_reg && ~fifo_writeflag_i)begin
 		read_address_next = read_address_after;       // read address moves forward
 		full_next = 1'b0;                             // FIFO isn't full if a read occured
-		if (read_address_after == write_address_reg)  // if read address caught up with write address,
+		if (read_address_after +6'd1 == write_address_reg)  // if read address caught up with write address,
 			empty_next = 1'b1;                        // FIFO is empty
 		end
 	

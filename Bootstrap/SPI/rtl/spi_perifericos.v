@@ -16,7 +16,13 @@ a traves del código.
 
 module spi_perifericos#(parameter DATA_WIDTH=8)(spi_clk_i, spi_rst_i, spi_data_i, spi_data_o, MOSI, MISO, SCK_SPI, SS, spi_doneflag_o, spi_statusreg_i);
 
-
+/***************************************************************************************
+El parametro down_clocl determina el tiempo que se quedará en bajo la señal de reloj, 
+despues de haber enviado un dato. Es ajustable por la necesidad del periferico. Si se 
+escribe el valor de 1 se agregará de tiempo el inverso de la frecuencia de la señal 
+de reloj del SPI.
+**************************************************************************************/
+parameter down_clock 		= 9;
 
 /***************************************************************************************
 Parametros para la máquina de estados para envío y recepción de datos SPI.
@@ -53,7 +59,7 @@ spi_data_o son los datos de salida, se compone de dos palabras. En los MSB se en
 primera palabra recibida por el periferico. En los LSB se encuentra la segunda palabra recibida
 por el periferico.
 **************************************************************************************/
-output reg	[DATA_WIDTH-1:0]  spi_data_o;
+output reg	[2*DATA_WIDTH-1:0]  spi_data_o;
 output reg						MOSI;//*********Salida MOSI del SPI
 output wire						SS;//***********Salida SS del SPI
 output wire						SCK_SPI;//******Salida de reloj del SPI
@@ -66,13 +72,18 @@ reg [7:0]				received_reg;//*********REGISTRO DE DATO RECIBIDO
 reg [DATA_WIDTH-1:0]	transmission_reg;//*****REGISTRO DE DATO A ENVIAR
 reg [DATA_WIDTH-1:0]	data_out_MOSI;//********DIVIDE LAS PALABRAS EN BYTES
 reg						clear_reg; //***********LIMPIA REGISTROS DE CUENTAS
+reg [1:0]				flag_edge_detector;//***DETECTOR DE RELOJ MASTER
+reg [11:0]				word_counter_send;//****CONTADOR DE BYTES ENVIADOS
 reg [1:0]				state, next_state; //***MAQUINA DE ESTADOS
-reg [DATA_WIDTH-1:0]	reg_data_MISO; //*******REGISTRO DE DATOS FINAL
+reg						clear_reg_word; //******LIMPIA REGISTROS DE CUENTA DE BYTES
+reg [2*DATA_WIDTH-1:0]	reg_data_MISO; //*******REGISTRO DE DATOS FINAL
 reg						SCK;//******************RELOJ INTERNO DEL SPI
 reg 					complete_word; //*******Se completo envio de una palabra	
 
 //***********************Division de la señal spi_statusreg_i*************************
 wire						spi_fbo_i;
+wire						spi_microSDwr_i;
+wire						spi_microSDrd_i;
 wire 						spi_operation_i;
 wire						enable_operation;
 wire [4:0]					clock_divider;
@@ -84,10 +95,10 @@ assign clock_divider	=	(spi_statusreg_i[4:2]==3'b000) ? 5'h00: (spi_statusreg_i[
 				
 
 //********ASIGNACIÓN DE SEÑALES DE SALIDA********************************************
-assign SCK_SPI=(complete_word)? 1'b0:SCK;
-assign SS=(complete_word )? 1'b1:1'b0;
+assign SCK_SPI=(complete_word || word_counter == 8'h00 || word_counter == 8'h01)? 1'b0:SCK;
+assign SS=(complete_word || word_counter == 8'h00)? 1'b1:1'b0;
 always @(posedge spi_clk_i) begin
-	if(spi_doneflag_o) begin
+	if(complete_word || spi_doneflag_o) begin
 		spi_data_o <= reg_data_MISO;
 	end
 	else begin
@@ -112,28 +123,30 @@ always @* begin
 	 case(state)
 		idle:begin
 			clear_reg	=	1'b1;
-			complete_word = 1'b1;
-			if(spi_operation_i && enable_operation)begin
+			complete_word = 1'b0;
+			if(spi_operation_i && flag_edge_detector == 8'b10 && enable_operation)begin
 					next_state	=	send;
 					spi_doneflag_o	=	1'b0;
 			end
 		end 
 		send:begin
 			clear_reg	=	1'b0;
-			complete_word = 1'b0;
-			spi_doneflag_o	=	1'b0;
-			if (word_counter == 5'h08)begin //corroborar
+			if (word_counter_send == 12'h002)begin //corroborar
 				next_state	=	finish;
 			end
-			data_out_MOSI = spi_data_i; 
-			reg_data_MISO= received_reg; 	
+			case(word_counter_send) //modificar tamano de palabra es modificar esta seccion
+				8'h00: begin data_out_MOSI = spi_data_i; reg_data_MISO[2*DATA_WIDTH-1:DATA_WIDTH] = received_reg; end
+				8'h01: begin data_out_MOSI = 0; reg_data_MISO[DATA_WIDTH-1:0] = received_reg; end
+				8'h02: begin complete_word = 1'b1; end
+			endcase
+		
 		end//send
 			
 		finish:begin
 			clear_reg	=	1'b1;
 			next_state	=	idle;
 			spi_doneflag_o	=	1'b1;
-			complete_word = 1'b1;
+			complete_word = 1'b0;
 		end
 		
 		default: next_state	=	finish;
@@ -142,14 +155,14 @@ end
 //*************************Transición de estados*********************************
 always@(posedge spi_clk_i  or posedge spi_rst_i) begin
 	if(spi_rst_i) 
-		state <= idle;
+		state <= finish;
 	else 
 		state <= next_state;
  end
 
 //*************************Generador de reloj SPI*********************************
-always @(negedge spi_clk_i or posedge spi_rst_i or posedge clear_reg) begin
-  if(spi_rst_i || clear_reg ) begin
+always @(negedge spi_clk_i or posedge spi_rst_i or posedge clear_reg_word) begin
+  if(spi_rst_i || clear_reg_word ) begin
 		counter_divider	=	5'h0; 
 		SCK	= 1'b0; 
 	end
@@ -163,22 +176,48 @@ always @(negedge spi_clk_i or posedge spi_rst_i or posedge clear_reg) begin
 		end
 	end 
 	
- end
-
+ end 
+ //***********************Detector de flancos*************************************
+always@(negedge spi_clk_i or posedge spi_rst_i)begin
+	if(spi_rst_i)begin
+		flag_edge_detector = 2'b00;
+	end
+	else begin
+		flag_edge_detector = {SCK,flag_edge_detector[1]};
+	end
+end	
+//***********************Cuenta de bits y palabras********************************
+//**************REINICIA CONTADOR DE BITS*****************************************
+always @(posedge spi_clk_i)begin
+	if(word_counter == 8'h09 && flag_edge_detector == 2'b01)begin
+		clear_reg_word <= 1'b1;
+	end
+	else begin
+		clear_reg_word <= 1'b0;
+	end
+end
+//*************Cuenta palabras enviadas*******************************************
+always @(posedge spi_clk_i or posedge spi_rst_i or posedge clear_reg)begin
+	if(spi_rst_i || clear_reg) begin
+		word_counter_send <= 12'h00;
+	end
+	else if(word_counter == 8'h09 && flag_edge_detector == 2'b01)begin
+		word_counter_send <= word_counter_send + 12'h001;
+	end
+end
 //**************Cuenta bits enviados***********************************************
- always@(posedge SCK or posedge spi_rst_i or posedge clear_reg) begin
-	if(spi_rst_i || clear_reg)  begin
+ always@(posedge SCK or posedge spi_rst_i or posedge clear_reg_word or posedge clear_reg) begin
+	if(clear_reg_word || spi_rst_i || clear_reg)  begin
 		word_counter <= 8'd0;  
 	end
     else begin 
 		word_counter <= word_counter + 8'd1;
 	end 
-end 
-
+end
  //****************Registros y procesos de salida e ingreso de datos***************
  //*********MISO INPUT DATA PROCESS************************************************
- always@(posedge SCK or posedge spi_rst_i or posedge clear_reg) begin
-	if(spi_rst_i || clear_reg)  begin
+ always@(posedge SCK or posedge spi_rst_i or posedge clear_reg_word or posedge clear_reg) begin
+	if(clear_reg_word || spi_rst_i || clear_reg)  begin
 			received_reg = 8'hFF;  
 	end
     else begin 
@@ -189,13 +228,13 @@ end
 	end 
 end 
 //**********MOSI OUTPUT DATA*******************************************************
-always@(negedge SCK or posedge spi_rst_i  or posedge clear_reg) begin
-	if(spi_rst_i || clear_reg) begin
+always@(negedge SCK or posedge spi_rst_i or posedge clear_reg_word or posedge clear_reg) begin
+	if(clear_reg_word || spi_rst_i || clear_reg) begin
 	  transmission_reg = 8'hFF;  
 	  MOSI = 1'b1;  
 	end  
 	else begin
-		if(word_counter == 8'h00) begin //load data into transmission_reg
+		if(word_counter == 8'h01  ) begin //load data into transmission_reg
 			transmission_reg = data_out_MOSI; 
 			MOSI= spi_fbo_i ? transmission_reg[DATA_WIDTH-1]:transmission_reg[0];
 		end 

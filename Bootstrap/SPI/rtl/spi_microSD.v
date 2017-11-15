@@ -104,7 +104,7 @@ assign spi_enableoper   =   spi_statusreg_i[8];
 reg							spi_doneflag_o;
 reg							spi_flagdatawr_o;
 reg 						complete_word;					
-assign spi_flagreg_o[0]= complete_word;							
+assign spi_flagreg_o[0]= (word_counter == 8'h08 && flag_edge_detector == 2'b01) ? complete_word : 1'b0;							
 assign spi_flagreg_o[1]= spi_doneflag_o;	
 assign spi_flagreg_o[2]= spi_flagdatawr_o;	
 
@@ -119,7 +119,7 @@ always @(posedge spi_clk_i) begin
 	end
 end		
 				
-/****************************MÁQUINA DE ESTADO***************************************
+/****************************M�?QUINA DE ESTADO***************************************
 En esta máquina de estados se tiene tres estados.
 	idle: Cuando el módulo esta habilitado([5] de spi_statusreg_i), espera a que se 
 	habilite el envio de un dato con [0] de spi_statusreg_i.
@@ -155,10 +155,10 @@ always @* begin
 			if (word_counter_send == 12'h00F && !spi_microSDwr_i && !spi_microSDrd_i)begin //corroborar
 				next_state	=	finish;
 			end
-			else if (word_counter_send == 12'h400 && !spi_microSDwr_i && spi_microSDrd_i)begin //revisar
+			else if (word_counter_send == 12'h600 && !spi_microSDwr_i && spi_microSDrd_i)begin //revisar
 					next_state	=	finish;
 			    end
-				else if (word_counter_send == 12'h400 && spi_microSDwr_i && !spi_microSDrd_i)begin
+				else if (word_counter_send == 12'h600 && spi_microSDwr_i && !spi_microSDrd_i)begin
 					next_state	=	finish;
 				end
 		end
@@ -200,19 +200,19 @@ always@(posedge spi_clk_i) begin
 		reg_data_MISO <= 32'h00000000;
 	end
 	else begin
-		if(word_counter == (12'h00A+(12'h005*word_counter_wroper)))begin
+		if(word_counter_send == (12'h00A+(12'h005*word_counter_wroper)))begin
 			reg_data_MISO[31:24] <= received_reg; 
 		end
 		else begin
-			if(word_counter == (12'h00B+(12'h005*word_counter_wroper)))begin
+			if(word_counter_send == (12'h00B+(12'h005*word_counter_wroper)))begin
 				reg_data_MISO[23:16] <= received_reg; 
 			end
 			else begin
-				if(word_counter == (12'h00C+(12'h005*word_counter_wroper)))begin
+				if(word_counter_send == (12'h00C+(12'h005*word_counter_wroper)))begin
 					reg_data_MISO[15:8] <= received_reg; 
 				end
 				else begin
-					if(word_counter == (12'h00D+(12'h005*word_counter_wroper)))begin
+					if(word_counter_send == (12'h00D+(12'h005*word_counter_wroper)))begin
 						reg_data_MISO[7:0] <= received_reg; 
 					end
 					else begin
@@ -275,7 +275,7 @@ always@* begin
 						
 		12'h009: begin 
 						complete_word =1'b0;
-						if(spi_microSDwr_i || spi_microSDrd_i )begin 
+						if(spi_microSDwr_i)begin 
 							data_out_MOSI = 8'hFE;
 						end 
 						if(spi_microSDwr_i)begin 

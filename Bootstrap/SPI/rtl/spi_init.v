@@ -12,7 +12,7 @@ de inicializacion para la tarjeta SD.
 
 ****************************************************************************************/
 module spi_init(spi_clk_i, spi_rst_i, spi_init_i, spi_datamicro_i, spi_statusregmicro_i, R1, spi_flagreg_i, spi_datainit_o, spi_statusreginit_o,
-				spi_initdone_o);
+				spi_initdone_o, spi_initwritemem_o);
 
 /***************************************************************************************
 Parametros con los valores de los comandos  y respuestas R1 de inicializacion de la 
@@ -54,6 +54,7 @@ input [2:0] 		spi_flagreg_i;
 output wire [47:0] 	spi_datainit_o;//*********Comando para spi_microSD.v(spi_data_i)
 output wire [8:0]  	spi_statusreginit_o;//****Señal para spi_microSD.v(spi_statusreg_i)
 output reg 			spi_initdone_o;//*********Indica finalización de la inicializacion 1: Finalizado/0:No finalizado
+output reg			spi_initwritemem_o;
 //**************************************************************************************
 
 //*************************Señales internas********************************************
@@ -68,7 +69,7 @@ assign spi_datainit_o =(spi_init_i) ? datainit : spi_datamicro_i;
 assign spi_statusreginit_o = (spi_init_i) ? statusreg : {spi_statusregmicro_i[7:1],1'b0,spi_statusregmicro_i[0]};
 
 
-/****************************MÁQUINA DE ESTADO***************************************
+/****************************M�?QUINA DE ESTADO***************************************
 En esta máquina de estados se registra en cada valor el comando y el valor de StatusReg
 a enviar cuando el valor de spi_init_i es 1. Una vez finalizado, el valor de 
 spi_initdone_o cambia a 1, con el fin de finalizar le inicializacion. Dejar spi_init_i
@@ -94,6 +95,7 @@ always @* begin
 	spi_initdone_o = 1'b0;
 	datainit = IWAIT;
 	statusreg = 8'h00;
+	spi_initwritemem_o = 1'b0;
 	case(counter_operation)
 		5'h00: begin 
 			datainit = IWAIT;
@@ -138,7 +140,8 @@ always @* begin
 			enable_count = 1'b1;
 		end
 		5'h07: begin 
-			datainit = {8'h51, 32'h00004200, 8'hFF};
+			datainit = {8'h51, 32'h00006020, 8'hFF};
+			spi_initwritemem_o = 1'b1;
 			statusreg = 9'b101010101; //010 1:4 clock divider -- 1 microSDrd 0 microSDwr -- 1 MSB fbo -- 0 spiinitSS -- 1 spi_operation
 			if(R1 == RCMDY )begin//|| R1== RCMDY)begin
 				enable_count = 1'b1; 
@@ -149,6 +152,7 @@ always @* begin
 		end
 		5'h08: begin
 			spi_initdone_o = 1'b1;
+			spi_initwritemem_o = 1'b1;
 			enable_count = 1'b0;
 			r_acmd47 = 1'b0;
 		end
